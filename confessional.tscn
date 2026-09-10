@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://buoa22q1xyeyc"]
+
+[ext_resource type="Texture2D" uid="uid://q1mkc15dvgae" path="res://Confessional/Sprites/Confessional conceptr.jpg" id="1_qma2o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mvrw6"]
+bg_color = Color(0.78039217, 0.5529412, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_07elc"]
+bg_color = Color(0.9065669, 0.46124268, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jpju2"]
+bg_color = Color(0.9065669, 0.46124268, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="Confessional" type="CanvasLayer" unique_id=448450968]
+
+[node name="Control" type="Control" parent="." unique_id=284190148]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ConfessionalSprite" type="TextureRect" parent="Control" unique_id=578484186]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_qma2o")
+
+[node name="Buttons" type="VBoxContainer" parent="Control" unique_id=1937676710]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 51.0
+offset_top = -20.0
+offset_right = 131.0
+offset_bottom = 20.0
+grow_vertical = 2
+
+[node name="TalkMore" type="Button" parent="Control/Buttons" unique_id=1907379326]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_mvrw6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_07elc")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jpju2")
+text = "FALE MAIS"
+
+[node name="Exorcism" type="Button" parent="Control/Buttons" unique_id=1541570218]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_mvrw6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_07elc")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jpju2")
+text = "EXORCIZAR"
+
+[node name="Forgive" type="Button" parent="Control/Buttons" unique_id=1143382642]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_mvrw6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_07elc")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jpju2")
+text = "FALE MAIS"
