@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DialogueBlock" format=3 uid="uid://lbnoto7dwo0k"]
+
+[ext_resource type="Script" uid="uid://dcl2035rt3xix" path="res://Data/DialogueBlock.gd" id="1_6b6oq"]
+
+[resource]
+script = ExtResource("1_6b6oq")
+dialogues = Array[String](["Tenho acordado em lugares que não lembro de ter ido.", "Ontem acordei no meio da floresta.", "Minhas mãos estavam cobertas de terra."])
+metadata/_custom_type_script = "uid://dcl2035rt3xix"

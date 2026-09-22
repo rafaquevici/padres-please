@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DialogueBlock" format=3 uid="uid://c6iof2pgrobep"]
+
+[ext_resource type="Script" uid="uid://dcl2035rt3xix" path="res://Data/DialogueBlock.gd" id="1_mt44q"]
+
+[resource]
+script = ExtResource("1_mt44q")
+dialogues = Array[String](["Padre, alguma coisa tem falado comigo.", "Ela fica sussurrando meu nome durante a noite.", "Às vezes, parece que está dentro da minha cabeça."])
+metadata/_custom_type_script = "uid://dcl2035rt3xix"

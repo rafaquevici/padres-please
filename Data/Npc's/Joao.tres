@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="NpcData" format=3 uid="uid://bouxgqgb1twt1"]
-
-[ext_resource type="Script" uid="uid://by0ciuei1i02l" path="res://Data/Npc_Data.gd" id="1_0icyl"]
-
-[resource]
-script = ExtResource("1_0icyl")
-name = "Joao:"
-Dialogues = Array[String](["Boa tarde, padre.", "Tenho tido sonhos estranhos...", "Todos os dias eu sonho com a minha falecida esposa...", "Não consigo dormir a dias...", "Não sei o que esta acontecendo..", "Me ajude padre."])
-metadata/_custom_type_script = "uid://by0ciuei1i02l"

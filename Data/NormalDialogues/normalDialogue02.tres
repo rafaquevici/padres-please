@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DialogueBlock" format=3 uid="uid://bb3b38n0xf1f3"]
+
+[ext_resource type="Script" uid="uid://dcl2035rt3xix" path="res://Data/DialogueBlock.gd" id="1_ywbrl"]
+
+[resource]
+script = ExtResource("1_ywbrl")
+dialogues = Array[String](["Padre, queria pedir perdão por uma coisa.", "Briguei com meu irmão ontem.", "Falei coisas que não deveria ter falado."])
+metadata/_custom_type_script = "uid://dcl2035rt3xix"

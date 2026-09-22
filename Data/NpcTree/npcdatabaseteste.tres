@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="NpcDatabase" format=3 uid="uid://cuevkq4086nib"]
+
+[ext_resource type="Script" uid="uid://dcl2035rt3xix" path="res://Data/DialogueBlock.gd" id="1_v5xgs"]
+[ext_resource type="Resource" uid="uid://cedw23m0357kf" path="res://Data/NormalDialogues/normalDialogue01.tres" id="2_wc7y0"]
+[ext_resource type="Resource" uid="uid://bb3b38n0xf1f3" path="res://Data/NormalDialogues/normalDialogue02.tres" id="3_686ct"]
+[ext_resource type="Resource" uid="uid://sx5bsyjao0id" path="res://Data/NormalDialogues/normalDialogue03.tres" id="4_utwwi"]
+[ext_resource type="Resource" uid="uid://bf3abv43pxbew" path="res://Data/NormalDialogues/normalDialogue04.tres" id="5_n6snt"]
+[ext_resource type="Resource" uid="uid://b4gy3qxotaekg" path="res://Data/NormalDialogues/normalDialogue05.tres" id="6_ttexm"]
+[ext_resource type="Resource" uid="uid://c6iof2pgrobep" path="res://Data/PossessedDialogues/possessedDialogue01.tres" id="7_1v64c"]
+[ext_resource type="Resource" uid="uid://bnfhvojniyk5g" path="res://Data/PossessedDialogues/possessedDialogue02.tres" id="8_ags41"]
+[ext_resource type="Resource" uid="uid://b7oo7i4tm6ubt" path="res://Data/PossessedDialogues/possessedDialogue03.tres" id="9_6sacc"]
+[ext_resource type="Resource" uid="uid://lbnoto7dwo0k" path="res://Data/PossessedDialogues/possessedDialogue04.tres" id="10_surdf"]
+[ext_resource type="Resource" uid="uid://be5le3atjmoix" path="res://Data/PossessedDialogues/possessedDialogue05.tres" id="11_j3j51"]
+[ext_resource type="Script" uid="uid://dko2hinfpa6le" path="res://Data/NpcDatabase.gd" id="12_57pnm"]
+
+[resource]
+script = ExtResource("12_57pnm")
+name = Array[String](["João", "Maria", "Carlos", "Ana", "Pedro", "Lucas", "Mariana", "Rafael", "Beatriz", "Antônio"])
+normalDialogue = Array[ExtResource("1_v5xgs")]([ExtResource("2_wc7y0"), ExtResource("3_686ct"), ExtResource("4_utwwi"), ExtResource("5_n6snt"), ExtResource("6_ttexm")])
+possessedDialogue = Array[ExtResource("1_v5xgs")]([ExtResource("7_1v64c"), ExtResource("8_ags41"), ExtResource("9_6sacc"), ExtResource("10_surdf"), ExtResource("11_j3j51")])
+metadata/_custom_type_script = "uid://dko2hinfpa6le"

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DialogueBlock" format=3 uid="uid://be5le3atjmoix"]
+
+[ext_resource type="Script" uid="uid://dcl2035rt3xix" path="res://Data/DialogueBlock.gd" id="1_immlj"]
+
+[resource]
+script = ExtResource("1_immlj")
+dialogues = Array[String](["Padre, às vezes sinto que alguém está usando meu corpo.", "Eu continuo consciente, mas não consigo controlar meus movimentos.", "E quando passa, não consigo lembrar do que fiz."])
+metadata/_custom_type_script = "uid://dcl2035rt3xix"
