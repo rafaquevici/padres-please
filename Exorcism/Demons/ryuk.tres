@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="DemonData" format=3 uid="uid://dqoqrlhswcepp"]
 
-[ext_resource type="Script" uid="uid://c6rso3vgbaaj8" path="res://Exorcism/Scripts/DemonResource.gd" id="1_eawkc"]
+[ext_resource type="Script" uid="uid://c6rso3vgbaaj8" path="res://Exorcism/Scripts/demon_resource.gd" id="1_eawkc"]
 [ext_resource type="Texture2D" uid="uid://nwnqk6l3jse8" path="res://Exorcism/DemonCatalog/PlaceHolders/Captura de tela 2026-09-14 194129.png" id="1_nt126"]
 
 [resource]

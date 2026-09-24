@@ -1,3 +1,16 @@
 [gd_scene format=3 uid="uid://8jjq6owp6ust"]
 
-[node name="Exorcism" type="Node2D" unique_id=1196957595]
+[ext_resource type="PackedScene" uid="uid://bs2b8fk05frh7" path="res://Exorcism/DemonCatalog/DemonCatalog.tscn" id="1_g5omu"]
+
+[node name="Exorcism" type="Control" unique_id=1184818705]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=410427051]
+layout_mode = 0
+offset_right = 1147.0
+offset_bottom = 649.0
+
+[node name="DemonCatalog" parent="." unique_id=182847139 instance=ExtResource("1_g5omu")]
+visible = false
+layout_mode = 0
