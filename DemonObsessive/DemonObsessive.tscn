@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://c2afu3esd1v4y"]
+
+[ext_resource type="Script" uid="uid://s2fvdukgeg8t" path="res://DemonObsessive/demon_obsessive.gd" id="1_cvqpw"]
+[ext_resource type="Texture2D" uid="uid://bucpqr5dmhebj" path="res://DemonObsessive/PlaceHolders/Captura de tela 2026-09-24 210920.png" id="2_ucnsv"]
+
+[node name="DemonObsessive" type="Control" unique_id=1753057095]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_cvqpw")
+
+[node name="Demon" type="TextureRect" parent="." unique_id=1073352275]
+layout_mode = 0
+offset_left = 196.0
+offset_top = 134.0
+offset_right = 484.0
+offset_bottom = 411.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_ucnsv")

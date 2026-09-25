@@ -3,12 +3,15 @@ extends Control
 # Recursos dos demônios
 @export var ryuk: DemonData
 @export var muzan: DemonData
+@export var eye: DemonData
 
 # Filhos da cena
 @onready var page: Panel = $Page
 @onready var UI_demon_name: Label = $Page/Name
 @onready var UI_demon_texture: TextureRect = $Page/Texture
 @onready var UI_demon_skills: Label = $Page/Description/Skills
+@onready var close_button: Button = $Page/CloseButton
+
 
 @onready var pass_left: Button = $Page/PassLeft
 @onready var pass_right: Button = $Page/PassRight
@@ -22,38 +25,41 @@ extends Control
 var current_page: int = 0
 
 # Array com os dados dos demônios
-@onready var page_array: Array[DemonData] = [ryuk, muzan]
+@onready var page_array: Array[DemonData] = [ryuk, muzan, eye]
 
 # Dados das skills de cada página
 var page_data_skill1: Dictionary = {}
 var page_data_skill2: Dictionary = {}
 var page_data_skill3: Dictionary = {}
 
+signal not_visible
 
-func _ready() -> void:
+func _ready():
 	pass_left.pressed.connect(_on_pass_left_pressed)
 	pass_right.pressed.connect(_on_pass_right_pressed)
+	close_button.pressed.connect(_on_close_pressed)
 
 	skill_1.text_changed.connect(_skill1_changed)
 	skill_2.text_changed.connect(_skill2_changed)
 	skill_3.text_changed.connect(_skill3_changed)
 
+
 	_change_page(0)
 
 
-func _skill1_changed(new_text: String) -> void:
+func _skill1_changed(new_text: String):
 	page_data_skill1[current_page] = new_text
 
 
-func _skill2_changed(new_text: String) -> void:
+func _skill2_changed(new_text: String):
 	page_data_skill2[current_page] = new_text
 
 
-func _skill3_changed(new_text: String) -> void:
+func _skill3_changed(new_text: String):
 	page_data_skill3[current_page] = new_text
 
 
-func _change_page(number_page: int) -> void:
+func _change_page(number_page: int):
 	if number_page < 0 or number_page >= page_array.size():
 		return
 
@@ -70,9 +76,14 @@ func _change_page(number_page: int) -> void:
 	skill_3.text = page_data_skill3.get(current_page, "")
 
 
-func _on_pass_left_pressed() -> void:
+func _on_pass_left_pressed():
 	_change_page(current_page - 1)
 
 
-func _on_pass_right_pressed() -> void:
+func _on_pass_right_pressed():
 	_change_page(current_page + 1)
+	
+func _on_close_pressed():
+	self.visible = false
+	not_visible.emit()
+	

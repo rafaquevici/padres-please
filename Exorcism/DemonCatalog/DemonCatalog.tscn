@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://nwnqk6l3jse8" path="res://Exorcism/DemonCatalog/PlaceHolders/Captura de tela 2026-09-14 194129.png" id="1_p5kfm"]
 [ext_resource type="Resource" uid="uid://dqoqrlhswcepp" path="res://Exorcism/Demons/ryuk.tres" id="2_bpcw6"]
 [ext_resource type="Resource" uid="uid://dlsk3450ss0yr" path="res://Exorcism/Demons/muzan.tres" id="3_c80ex"]
+[ext_resource type="Resource" uid="uid://0fp855wywyfx" path="res://Exorcism/Demons/eye.tres" id="4_c80ex"]
 
 [node name="DemonCatalog" type="Control" unique_id=36881817]
 layout_mode = 3
@@ -11,6 +12,7 @@ anchors_preset = 0
 script = ExtResource("1_f3jcb")
 ryuk = ExtResource("2_bpcw6")
 muzan = ExtResource("3_c80ex")
+eye = ExtResource("4_c80ex")
 
 [node name="Page" type="Panel" parent="." unique_id=2058769857]
 layout_mode = 0
@@ -19,6 +21,12 @@ offset_top = 53.0
 offset_right = 937.0
 offset_bottom = 593.0
 metadata/_edit_use_anchors_ = true
+
+[node name="CloseButton" type="Button" parent="Page" unique_id=401231425]
+layout_mode = 0
+offset_right = 81.0
+offset_bottom = 31.0
+text = "Fechar"
 
 [node name="Name" type="Label" parent="Page" unique_id=1924214155]
 layout_mode = 0
@@ -54,6 +62,7 @@ offset_top = 119.0
 offset_right = 295.0
 offset_bottom = 427.0
 texture = ExtResource("1_p5kfm")
+expand_mode = 1
 
 [node name="Description" type="Panel" parent="Page" unique_id=382002707]
 layout_mode = 0

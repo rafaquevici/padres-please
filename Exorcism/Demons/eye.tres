@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DemonData" format=3 uid="uid://0fp855wywyfx"]
+
+[ext_resource type="Texture2D" uid="uid://bucpqr5dmhebj" path="res://DemonObsessive/PlaceHolders/Captura de tela 2026-09-24 210920.png" id="1_j3u38"]
+[ext_resource type="Script" uid="uid://c6rso3vgbaaj8" path="res://Exorcism/Scripts/demon_resource.gd" id="1_t657s"]
+
+[resource]
+script = ExtResource("1_t657s")
+demon_name = "Eye"
+demon_catalog_icon = ExtResource("1_j3u38")
+health = 100
+metadata/_custom_type_script = "uid://c6rso3vgbaaj8"
