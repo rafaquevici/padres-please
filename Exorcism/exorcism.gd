@@ -1,21 +1,20 @@
+class_name Exorcism
 extends Control
+
 # Filhos cena
 @onready var catalog_button: Button = $CatalogButton
 @onready var demon_catalog: Control = $DemonCatalog
 @onready var cursor: TextureRect = $Cursor
 @onready var item_cross: Button = $ItemContainer1/ItemCross
+@onready var demon_type_obsessive: Control = $Demons/DemonTypeObsessive
 
 
 @export var possessive_demons: Array[DemonData]
 @export var obsessive_demons: Array[DemonData]
 
-enum DemonTypes {
-	OBSESSIVE,
-	POSSESSIVE,
-}
-var current_demon_type: DemonTypes
+var current_demon_type: DemonData.DemonType 
 var current_demon: DemonData
-var is_possessed: bool
+var is_possessed: bool = false
 
 func _ready():
 	randomize()
@@ -35,23 +34,22 @@ func _process(delta: float):
 func _on_item_cross_pressed():
 	if item_cross.icon != null:
 		cursor.texture = item_cross.icon
-		item_cross.icon = null	
+		item_cross.icon = null
+		GameState.item_in_hand = item_cross
 	else:
 		item_cross.icon = cursor.texture
 		cursor.texture = null
+		GameState.item_in_hand = null
 	
 func _randomize_demon():
 	if is_possessed:
 		var roll: float = randf()
-		if roll < 0.7:
-			current_demon_type = DemonTypes.OBSESSIVE
-		else:
-			current_demon_type = DemonTypes.POSSESSIVE
-		if current_demon_type == DemonTypes.OBSESSIVE:
+		current_demon_type = DemonData.DemonType.OBSESSIVE if roll < 0.7 else DemonData.DemonType.POSSESSIVE
+		if current_demon_type == DemonData.DemonType.OBSESSIVE:
 			current_demon = obsessive_demons.pick_random()
 		else:
 			current_demon = possessive_demons.pick_random()
-	else: 
+	else:
 		current_demon = null
 	
 func _open_catalog():
@@ -68,4 +66,12 @@ func _check_possession() -> void:
 		is_possessed = false
 
 func _start_demon():
-	pass
+	if is_possessed:
+		if current_demon_type == DemonData.DemonType.OBSESSIVE:
+			demon_type_obsessive.visible = true
+			demon_type_obsessive._on_set_demon(current_demon)
+			demon_type_obsessive._on_set_health(current_demon)
+		
+	
+func is_holding_cross():
+	return GameState.item_in_hand == item_cross

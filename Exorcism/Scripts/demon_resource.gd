@@ -2,8 +2,8 @@ class_name DemonData
 extends Resource
 
 enum DemonType {
-	OBSSESIVE,
-	POSSESIVE,
+	OBSESSIVE,
+	POSSESSIVE,
 }
 
 @export var demon_name: String 

@@ -13,6 +13,10 @@ config_version=5
 config/name="Padres-Please"
 config/features=PackedStringArray("4.6", "Forward Plus")
 
+[autoload]
+
+GameState="*uid://dih6lchem1bn6"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

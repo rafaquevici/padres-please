@@ -7,6 +7,7 @@
 [ext_resource type="Resource" uid="uid://dlsk3450ss0yr" path="res://Exorcism/Demons/muzan.tres" id="3_l5tor"]
 [ext_resource type="Texture2D" uid="uid://dui08bsa2nkfj" path="res://Exorcism/PlaceHolders/Captura de tela 2026-09-23 202844.png" id="3_m20rb"]
 [ext_resource type="Resource" uid="uid://0fp855wywyfx" path="res://Exorcism/Demons/eye.tres" id="4_ik8ot"]
+[ext_resource type="PackedScene" uid="uid://c2afu3esd1v4y" path="res://DemonObsessive/DemonTypeObsessive.tscn" id="8_l5tor"]
 
 [node name="Exorcism" type="Control" unique_id=1184818705]
 layout_mode = 3
@@ -108,3 +109,9 @@ offset_right = 381.0
 offset_bottom = 336.0
 mouse_filter = 2
 expand_mode = 1
+
+[node name="Demons" type="Node" parent="." unique_id=117109905]
+
+[node name="DemonTypeObsessive" parent="Demons" unique_id=1753057095 instance=ExtResource("8_l5tor")]
+visible = false
+metadata/_edit_use_anchors_ = true
