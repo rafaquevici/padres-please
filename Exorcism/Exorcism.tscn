@@ -7,6 +7,8 @@
 [ext_resource type="Resource" uid="uid://dlsk3450ss0yr" path="res://Exorcism/Demons/muzan.tres" id="3_l5tor"]
 [ext_resource type="Texture2D" uid="uid://dui08bsa2nkfj" path="res://Exorcism/PlaceHolders/Captura de tela 2026-09-23 202844.png" id="3_m20rb"]
 [ext_resource type="Resource" uid="uid://0fp855wywyfx" path="res://Exorcism/Demons/eye.tres" id="4_ik8ot"]
+[ext_resource type="Texture2D" uid="uid://hplao5t1sy03" path="res://Exorcism/Sprites/maozinha aberta.png" id="5_8ncxl"]
+[ext_resource type="Texture2D" uid="uid://d27gadepcwa8f" path="res://Exorcism/Sprites/mãozinha.png" id="8_ik8ot"]
 [ext_resource type="PackedScene" uid="uid://c2afu3esd1v4y" path="res://DemonObsessive/DemonTypeObsessive.tscn" id="8_l5tor"]
 
 [node name="Exorcism" type="Control" unique_id=1184818705]
@@ -15,6 +17,8 @@ anchors_preset = 0
 script = ExtResource("1_m20rb")
 possessive_demons = Array[ExtResource("2_00r1e")]([ExtResource("3_l5tor"), ExtResource("3_l5tor")])
 obsessive_demons = Array[ExtResource("2_00r1e")]([ExtResource("4_ik8ot")])
+open_hand = ExtResource("5_8ncxl")
+closed_hand = ExtResource("8_ik8ot")
 
 [node name="DemonCatalog" parent="." unique_id=182847139 instance=ExtResource("1_g5omu")]
 visible = false
@@ -101,13 +105,23 @@ offset_bottom = 706.0
 icon = ExtResource("3_m20rb")
 icon_alignment = 1
 
-[node name="Cursor" type="TextureRect" parent="." unique_id=1998614286]
+[node name="HoldingCursor" type="TextureRect" parent="." unique_id=1998614286]
 layout_mode = 0
 offset_left = 325.0
 offset_top = 280.0
 offset_right = 381.0
 offset_bottom = 336.0
 mouse_filter = 2
+expand_mode = 1
+
+[node name="Cursor" type="TextureRect" parent="." unique_id=1779850661]
+layout_mode = 0
+offset_left = 325.0
+offset_top = 280.0
+offset_right = 446.0
+offset_bottom = 400.0
+mouse_filter = 2
+texture = ExtResource("8_ik8ot")
 expand_mode = 1
 
 [node name="Demons" type="Node" parent="." unique_id=117109905]

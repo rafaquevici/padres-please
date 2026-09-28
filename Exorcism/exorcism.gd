@@ -7,10 +7,13 @@ extends Control
 @onready var cursor: TextureRect = $Cursor
 @onready var item_cross: Button = $ItemContainer1/ItemCross
 @onready var demon_type_obsessive: Control = $Demons/DemonTypeObsessive
+@onready var holding_cursor: TextureRect = $HoldingCursor
 
 
 @export var possessive_demons: Array[DemonData]
 @export var obsessive_demons: Array[DemonData]
+@export var open_hand: Texture2D
+@export var closed_hand: Texture2D
 
 var current_demon_type: DemonData.DemonType 
 var current_demon: DemonData
@@ -24,22 +27,27 @@ func _ready():
 	catalog_button.pressed.connect(_open_catalog)
 	demon_catalog.not_visible.connect(_on_catalog_visibility_changed)
 	item_cross.pressed.connect(_on_item_cross_pressed)
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 
 	
 func _process(delta: float):
 	var mouse_pos: Vector2 = get_global_mouse_position()
-	var half_size: Vector2 = cursor.size / 2.0
+	var half_size: Vector2 = holding_cursor.size / 2.0
+	holding_cursor.global_position = mouse_pos - half_size
 	cursor.global_position = mouse_pos - half_size
+	
 	
 func _on_item_cross_pressed():
 	if item_cross.icon != null:
-		cursor.texture = item_cross.icon
+		holding_cursor.texture = item_cross.icon
+		cursor.texture = open_hand
 		item_cross.icon = null
 		GameState.item_in_hand = item_cross
 	else:
-		item_cross.icon = cursor.texture
-		cursor.texture = null
+		item_cross.icon = holding_cursor.texture
+		holding_cursor.texture = null
 		GameState.item_in_hand = null
+		cursor.texture = closed_hand
 	
 func _randomize_demon():
 	if is_possessed:
