@@ -17,14 +17,14 @@ func _ready():
 
 func random_position():
 	var screen_size = get_viewport_rect().size
-	
+
 	var limit_x = screen_size.x - size.x - 300
 	var limit_y = screen_size.y - size.y - 200
-	
+
 	var x_random = randf_range(300, limit_x)
 	var y_random = randf_range(0, limit_y)
-	
-	demon_texture.global_position = Vector2(x_random, y_random)
+
+	position = Vector2(x_random, y_random)
 
 func _on_demon_input(event: InputEvent):
 	if not is_alive:

@@ -3,13 +3,15 @@
 [ext_resource type="PackedScene" uid="uid://bs2b8fk05frh7" path="res://Exorcism/DemonCatalog/DemonCatalog.tscn" id="1_g5omu"]
 [ext_resource type="Script" uid="uid://c0fdls3rvtfrc" path="res://Exorcism/exorcism.gd" id="1_m20rb"]
 [ext_resource type="Script" uid="uid://c6rso3vgbaaj8" path="res://Exorcism/Scripts/demon_resource.gd" id="2_00r1e"]
-[ext_resource type="Texture2D" uid="uid://5b3mjqfkut23" path="res://Exorcism/PlaceHolders/Captura de tela 2026-09-24 210528.png" id="3_c7w0p"]
 [ext_resource type="Resource" uid="uid://dlsk3450ss0yr" path="res://Exorcism/Demons/muzan.tres" id="3_l5tor"]
 [ext_resource type="Texture2D" uid="uid://dui08bsa2nkfj" path="res://Exorcism/PlaceHolders/Captura de tela 2026-09-23 202844.png" id="3_m20rb"]
 [ext_resource type="Resource" uid="uid://0fp855wywyfx" path="res://Exorcism/Demons/eye.tres" id="4_ik8ot"]
+[ext_resource type="Texture2D" uid="uid://gmv82u7e7lkb" path="res://Exorcism/DemonCatalog/PlaceHolders/image.png" id="5_3tqnv"]
 [ext_resource type="Texture2D" uid="uid://hplao5t1sy03" path="res://Exorcism/Sprites/maozinha aberta.png" id="5_8ncxl"]
+[ext_resource type="Texture2D" uid="uid://dyaxykm1djfku" path="res://Animations/Spritesheets/Captura de tela 2026-10-12 192453.png" id="8_3tqnv"]
 [ext_resource type="Texture2D" uid="uid://d27gadepcwa8f" path="res://Exorcism/Sprites/mãozinha.png" id="8_ik8ot"]
 [ext_resource type="PackedScene" uid="uid://c2afu3esd1v4y" path="res://DemonObsessive/DemonTypeObsessive.tscn" id="8_l5tor"]
+[ext_resource type="Texture2D" uid="uid://lmev3mxrdbn8" path="res://Exorcism/Sprites/cruzona_foda_padre.png" id="9_5hked"]
 
 [node name="Exorcism" type="Control" unique_id=1184818705]
 layout_mode = 3
@@ -19,112 +21,119 @@ possessive_demons = Array[ExtResource("2_00r1e")]([ExtResource("3_l5tor"), ExtRe
 obsessive_demons = Array[ExtResource("2_00r1e")]([ExtResource("4_ik8ot")])
 open_hand = ExtResource("5_8ncxl")
 closed_hand = ExtResource("8_ik8ot")
+holding_cross_hand = ExtResource("5_3tqnv")
+item_cross_texture = ExtResource("9_5hked")
 
 [node name="DemonCatalog" parent="." unique_id=182847139 instance=ExtResource("1_g5omu")]
 visible = false
+z_index = 3
+z_as_relative = false
+layout_mode = 0
+
+[node name="Cursor" type="TextureRect" parent="." unique_id=1779850661]
+visibility_layer = 512
 z_index = 8
+z_as_relative = false
 layout_mode = 0
-
-[node name="TextureRect" type="TextureRect" parent="." unique_id=464754225]
-layout_mode = 0
-offset_right = 1154.0
-offset_bottom = 647.0
+offset_left = 325.0
+offset_top = 280.0
+offset_right = 425.0
+offset_bottom = 379.0
 mouse_filter = 2
+texture = ExtResource("8_ik8ot")
+expand_mode = 1
+stretch_mode = 3
 
-[node name="ItemContainer1" type="VBoxContainer" parent="." unique_id=361683102]
+[node name="Scenario" type="Control" parent="." unique_id=173270692]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Scenario" unique_id=464754225]
+z_index = -6
+layout_mode = 0
+offset_top = -341.0
+offset_right = 1154.0
+offset_bottom = 994.0
+mouse_filter = 2
+texture = ExtResource("8_3tqnv")
+
+[node name="ItemContainer1" type="VBoxContainer" parent="Scenario" unique_id=361683102]
 layout_mode = 0
 offset_left = 1.0
 offset_right = 146.0
-offset_bottom = 646.0
+offset_bottom = 650.0
 
-[node name="Button" type="Button" parent="ItemContainer1" unique_id=1038472661]
+[node name="Button" type="Button" parent="Scenario/ItemContainer1" unique_id=1038472661]
 custom_minimum_size = Vector2(2, 105)
 layout_mode = 2
 
-[node name="Button2" type="Button" parent="ItemContainer1" unique_id=4541517]
+[node name="Button2" type="Button" parent="Scenario/ItemContainer1" unique_id=4541517]
 custom_minimum_size = Vector2(2, 105)
 layout_mode = 2
 
-[node name="Button3" type="Button" parent="ItemContainer1" unique_id=1227317056]
+[node name="Button3" type="Button" parent="Scenario/ItemContainer1" unique_id=1227317056]
 custom_minimum_size = Vector2(2, 105)
 layout_mode = 2
 
-[node name="Button4" type="Button" parent="ItemContainer1" unique_id=830972247]
+[node name="Button4" type="Button" parent="Scenario/ItemContainer1" unique_id=830972247]
 custom_minimum_size = Vector2(2, 105)
 layout_mode = 2
 
-[node name="Button5" type="Button" parent="ItemContainer1" unique_id=1261333927]
+[node name="Button5" type="Button" parent="Scenario/ItemContainer1" unique_id=1261333927]
 custom_minimum_size = Vector2(2, 105)
 layout_mode = 2
 
-[node name="ItemCross" type="Button" parent="ItemContainer1" unique_id=2067288299]
+[node name="ItemCross" type="Button" parent="Scenario/ItemContainer1" unique_id=2067288299]
 custom_minimum_size = Vector2(2, 105)
 layout_mode = 2
-icon = ExtResource("3_c7w0p")
+icon = ExtResource("9_5hked")
 icon_alignment = 1
 expand_icon = true
 
-[node name="ItemContainer2" type="VBoxContainer" parent="." unique_id=605377989]
+[node name="ItemContainer2" type="VBoxContainer" parent="Scenario" unique_id=605377989]
 layout_mode = 0
 offset_left = 1006.0
 offset_top = -1.0
 offset_right = 1151.0
 offset_bottom = 649.0
 
-[node name="Button" type="Button" parent="ItemContainer2" unique_id=962597271]
+[node name="Button" type="Button" parent="Scenario/ItemContainer2" unique_id=962597271]
 custom_minimum_size = Vector2(2, 105)
 layout_mode = 2
 
-[node name="Button2" type="Button" parent="ItemContainer2" unique_id=23616855]
+[node name="Button2" type="Button" parent="Scenario/ItemContainer2" unique_id=23616855]
 custom_minimum_size = Vector2(2, 105)
 layout_mode = 2
 
-[node name="Button3" type="Button" parent="ItemContainer2" unique_id=1539969945]
+[node name="Button3" type="Button" parent="Scenario/ItemContainer2" unique_id=1539969945]
 custom_minimum_size = Vector2(2, 105)
 layout_mode = 2
 
-[node name="Button4" type="Button" parent="ItemContainer2" unique_id=21718490]
+[node name="Button4" type="Button" parent="Scenario/ItemContainer2" unique_id=21718490]
 custom_minimum_size = Vector2(2, 105)
 layout_mode = 2
 
-[node name="Button5" type="Button" parent="ItemContainer2" unique_id=1870029066]
+[node name="Button5" type="Button" parent="Scenario/ItemContainer2" unique_id=1870029066]
 custom_minimum_size = Vector2(2, 105)
 layout_mode = 2
 
-[node name="Button6" type="Button" parent="ItemContainer2" unique_id=1825310551]
+[node name="Button6" type="Button" parent="Scenario/ItemContainer2" unique_id=1825310551]
 custom_minimum_size = Vector2(2, 105)
 layout_mode = 2
 
-[node name="CatalogButton" type="Button" parent="." unique_id=253214379]
+[node name="CatalogButton" type="Button" parent="Scenario" unique_id=253214379]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 0
 offset_left = 320.0
 offset_top = 548.0
 offset_right = 843.0
-offset_bottom = 706.0
+offset_bottom = 805.0
 icon = ExtResource("3_m20rb")
 icon_alignment = 1
 
-[node name="HoldingCursor" type="TextureRect" parent="." unique_id=1998614286]
-layout_mode = 0
-offset_left = 325.0
-offset_top = 280.0
-offset_right = 381.0
-offset_bottom = 336.0
-mouse_filter = 2
-expand_mode = 1
-
-[node name="Cursor" type="TextureRect" parent="." unique_id=1779850661]
-layout_mode = 0
-offset_left = 325.0
-offset_top = 280.0
-offset_right = 446.0
-offset_bottom = 400.0
-mouse_filter = 2
-texture = ExtResource("8_ik8ot")
-expand_mode = 1
-
-[node name="Demons" type="Node" parent="." unique_id=117109905]
+[node name="Demons" type="CanvasLayer" parent="." unique_id=525886575]
+layer = 0
 
 [node name="DemonTypeObsessive" parent="Demons" unique_id=1753057095 instance=ExtResource("8_l5tor")]
 visible = false

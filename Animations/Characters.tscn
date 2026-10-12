@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://cbdkc6pxcevh5"]
+
+[ext_resource type="Script" uid="uid://q3fhosulov7r" path="res://Animations/characters.gd" id="1_xpmkf"]
+[ext_resource type="Texture2D" uid="uid://i13bdh5vdcex" path="res://Animations/Spritesheets/alex sheet.jpg" id="2_651va"]
+[ext_resource type="Texture2D" uid="uid://dlsxxhja0en1x" path="res://Animations/Spritesheets/geno sheet.jpg" id="3_iurmn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ny8vg"]
+atlas = ExtResource("2_651va")
+region = Rect2(0, 0, 900, 1600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cphfl"]
+atlas = ExtResource("2_651va")
+region = Rect2(900, 0, 900, 1600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f0sou"]
+atlas = ExtResource("2_651va")
+region = Rect2(1800, 0, 900, 1600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jvibm"]
+atlas = ExtResource("2_651va")
+region = Rect2(2700, 0, 900, 1600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dxw45"]
+atlas = ExtResource("3_iurmn")
+region = Rect2(0, 0, 900, 1600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gjbi7"]
+atlas = ExtResource("3_iurmn")
+region = Rect2(900, 0, 900, 1600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fgq56"]
+atlas = ExtResource("3_iurmn")
+region = Rect2(1800, 0, 900, 1600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xokqy"]
+atlas = ExtResource("3_iurmn")
+region = Rect2(2700, 0, 900, 1600)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bplb8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ny8vg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cphfl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f0sou")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jvibm")
+}],
+"loop": true,
+"name": &"alex",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dxw45")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gjbi7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fgq56")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xokqy")
+}],
+"loop": true,
+"name": &"genova",
+"speed": 5.0
+}]
+
+[node name="Characters" type="Node2D" unique_id=345148996]
+script = ExtResource("1_xpmkf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1680733301]
+position = Vector2(578.99994, 312)
+scale = Vector2(0.8466667, 0.773125)
+sprite_frames = SubResource("SpriteFrames_bplb8")
+animation = &"genova"
