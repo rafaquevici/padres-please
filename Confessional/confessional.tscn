@@ -2,12 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://q1mkc15dvgae" path="res://Confessional/Sprites/Confessional conceptr.jpg" id="1_duwye"]
 [ext_resource type="Script" uid="uid://c4qpslnf0f84u" path="res://Confessional/confessional.gd" id="1_raimj"]
-
-[sub_resource type="GDScript" id="GDScript_raimj"]
-
-[sub_resource type="Resource" id="Resource_hn2o2"]
-script = SubResource("GDScript_raimj")
-metadata/_custom_type_script = "uid://by0ciuei1i02l"
+[ext_resource type="Resource" uid="uid://cuevkq4086nib" path="res://Data/NpcTree/npcdatabaseteste.tres" id="2_tq4s4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mvrw6"]
 bg_color = Color(0.78039217, 0.5529412, 0, 1)
@@ -32,7 +27,7 @@ corner_radius_bottom_left = 4
 
 [node name="Confessional" type="CanvasLayer" unique_id=448450968]
 script = ExtResource("1_raimj")
-Npc1 = SubResource("Resource_hn2o2")
+database = ExtResource("2_tq4s4")
 
 [node name="Control" type="Control" parent="." unique_id=284190148]
 layout_mode = 3

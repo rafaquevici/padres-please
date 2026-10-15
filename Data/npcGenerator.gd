@@ -3,18 +3,20 @@ extends RefCounted
 
 var database: NpcDatabase
 
+@warning_ignore("shadowed_variable")
 func _init(database: NpcDatabase):
 	self.database = database
 
 
 func generate_names() -> String:
-	return database.Name.pick_random()
+	return database.name.pick_random()
 
 func generate_possessed() -> bool:
 	return randi_range(0, 1) == 1
 
 var possessed = generate_possessed()
 
+@warning_ignore("shadowed_variable")
 func generate_dialogues(possessed: bool) -> DialogueBlock:
 	if (possessed):
 		return database.possessedDialogue.pick_random()

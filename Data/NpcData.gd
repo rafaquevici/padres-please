@@ -6,13 +6,13 @@ var possessed: bool
 var dialogue: DialogueBlock
 
 
-func Initiate_Name(nome: String):
-	name = nome
+func Initiate_Name(nameChosen: String):
+	name = nameChosen
 
 
-func Initiate_Possessed(valor: bool):
-	possessed = valor
+func Initiate_Possessed(value: bool):
+	possessed = value
 
 
-func Initiate_Dialogue(bloco: DialogueBlock):
-	dialogue = bloco
+func Initiate_Dialogue(dialogueBlock: DialogueBlock):
+	dialogue = dialogueBlock
