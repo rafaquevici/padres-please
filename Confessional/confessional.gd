@@ -12,7 +12,7 @@ var npc: NpcData
 func _ready() -> void:
 	var generator = NpcGenerator.new(database)
 	npc = generator.generate_npc()
-	
+	GameState.current_npc = npc
 	print(npc.name)
 	print(npc.possessed)
 	

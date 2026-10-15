@@ -25,9 +25,9 @@ var is_possessed: bool = false
 var animation_scene = preload("res://Animations/Characters.tscn")
 
 func _ready():
-	_get_character("genova", true)
+	_get_character(GameState.current_npc.name, true)
+	is_possessed = GameState.current_npc.possessed
 	randomize()
-	_check_possession()
 	_randomize_demon()
 	_start_demon()
 	_define_cursor()
@@ -92,12 +92,6 @@ func _open_catalog():
 	
 func _on_catalog_visibility_changed():
 	catalog_button.visible = true
-
-func _check_possession() -> void:
-	if randf() < 0.5:
-		is_possessed = true
-	else:
-		is_possessed = false
 
 func _start_demon():
 	if is_possessed:
