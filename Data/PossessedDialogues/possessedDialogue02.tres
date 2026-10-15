@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DialogueBlock" format=3 uid="uid://bnfhvojniyk5g"]
+
+[ext_resource type="Script" uid="uid://dcl2035rt3xix" path="res://Data/DialogueBlock.gd" id="1_bw07l"]
+
+[resource]
+script = ExtResource("1_bw07l")
+dialogues = Array[String](["Eu não tenho conseguido reconhecer meu próprio reflexo.", "Ontem olhei para o espelho e ele estava sorrindo.", "Mas eu não estava sorrindo."])
+metadata/_custom_type_script = "uid://dcl2035rt3xix"

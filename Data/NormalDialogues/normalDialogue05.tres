@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DialogueBlock" format=3 uid="uid://b4gy3qxotaekg"]
+
+[ext_resource type="Script" uid="uid://dcl2035rt3xix" path="res://Data/DialogueBlock.gd" id="1_3e537"]
+
+[resource]
+script = ExtResource("1_3e537")
+dialogues = Array[String](["Faz alguns dias que não venho à igreja.", "Tenho ficado ocupado com meus estudos.", "Mas senti que precisava voltar e conversar."])
+metadata/_custom_type_script = "uid://dcl2035rt3xix"
