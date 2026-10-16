@@ -21,7 +21,6 @@ func _ready() -> void:
 	dialogue.text = npc.dialogue.dialogues[0]
 	npc_name.text = npc.name
 
-
 func _on_talk_more_pressed() -> void:
 	if controlDialogue < 2:
 		controlDialogue = controlDialogue + 1
