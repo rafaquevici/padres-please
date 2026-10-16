@@ -117,3 +117,5 @@ text = "
 autowrap_mode = 3
 
 [connection signal="pressed" from="Control/Buttons/TalkMore" to="." method="_on_talk_more_pressed"]
+[connection signal="pressed" from="Control/Buttons/Exorcism" to="." method="_on_exorcism_pressed"]
+[connection signal="pressed" from="Control/Buttons/Forgive" to="." method="_on_forgive_pressed"]
