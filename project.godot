@@ -20,7 +20,9 @@ GameState="*uid://dih6lchem1bn6"
 
 [physics]
 
+common/physics_ticks_per_second=120
 3d/physics_engine="Jolt Physics"
+2d/default_linear_damp=0.988
 
 [rendering]
 

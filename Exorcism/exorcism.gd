@@ -25,8 +25,9 @@ var is_possessed: bool = false
 var animation_scene = preload("res://Animations/Characters.tscn")
 
 func _ready():
-	_get_character(GameState.current_npc.name, true)
-	is_possessed = GameState.current_npc.possessed
+	_get_character("genova", true)
+	#_get_character(GameState.current_npc.animation, true) quando tiver 
+	#is_possessed = GameState.current_npc.possessed
 	randomize()
 	_randomize_demon()
 	_start_demon()

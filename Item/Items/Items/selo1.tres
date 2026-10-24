@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://d4e5dsh3gijxu"]
+
+[ext_resource type="Script" uid="uid://c5ioevbr2k8fv" path="res://Item/Items/Scripts/item_resource.gd" id="1_f5it2"]
+[ext_resource type="Texture2D" uid="uid://donq3wbpumijj" path="res://Item/Sprites/selo padre.png" id="1_hsrdx"]
+[ext_resource type="Texture2D" uid="uid://bg1augblt2uo5" path="res://Item/Sprites/New Piskel-1.png (6).png" id="3_o6mxl"]
+
+[resource]
+script = ExtResource("1_f5it2")
+name = "Selo"
+texture = ExtResource("3_o6mxl")
+holding_texture = ExtResource("1_hsrdx")
+price = 20
+metadata/_custom_type_script = "uid://c5ioevbr2k8fv"

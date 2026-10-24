@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dk2q163t56dxf"]
+
+[ext_resource type="Script" uid="uid://c5ioevbr2k8fv" path="res://Item/Items/Scripts/item_resource.gd" id="1_47xuh"]
+[ext_resource type="Texture2D" uid="uid://gmv82u7e7lkb" path="res://Exorcism/DemonCatalog/PlaceHolders/image.png" id="1_85lg7"]
+[ext_resource type="Texture2D" uid="uid://lmev3mxrdbn8" path="res://Exorcism/Sprites/cruzona_foda_padre.png" id="2_1anro"]
+
+[resource]
+script = ExtResource("1_47xuh")
+name = "Cruz"
+texture = ExtResource("2_1anro")
+holding_texture = ExtResource("1_85lg7")
+price = 100
+metadata/_custom_type_script = "uid://c5ioevbr2k8fv"

@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://c0fdls3rvtfrc" path="res://Exorcism/exorcism.gd" id="1_m20rb"]
 [ext_resource type="Script" uid="uid://c6rso3vgbaaj8" path="res://Exorcism/Scripts/demon_resource.gd" id="2_00r1e"]
 [ext_resource type="Resource" uid="uid://dlsk3450ss0yr" path="res://Exorcism/Demons/muzan.tres" id="3_l5tor"]
-[ext_resource type="Texture2D" uid="uid://dui08bsa2nkfj" path="res://Exorcism/PlaceHolders/Captura de tela 2026-09-23 202844.png" id="3_m20rb"]
 [ext_resource type="Resource" uid="uid://0fp855wywyfx" path="res://Exorcism/Demons/eye.tres" id="4_ik8ot"]
 [ext_resource type="Texture2D" uid="uid://gmv82u7e7lkb" path="res://Exorcism/DemonCatalog/PlaceHolders/image.png" id="5_3tqnv"]
 [ext_resource type="Texture2D" uid="uid://hplao5t1sy03" path="res://Exorcism/Sprites/maozinha aberta.png" id="5_8ncxl"]
@@ -12,6 +11,17 @@
 [ext_resource type="Texture2D" uid="uid://d27gadepcwa8f" path="res://Exorcism/Sprites/mãozinha.png" id="8_ik8ot"]
 [ext_resource type="PackedScene" uid="uid://c2afu3esd1v4y" path="res://DemonObsessive/DemonTypeObsessive.tscn" id="8_l5tor"]
 [ext_resource type="Texture2D" uid="uid://lmev3mxrdbn8" path="res://Exorcism/Sprites/cruzona_foda_padre.png" id="9_5hked"]
+[ext_resource type="Texture2D" uid="uid://5l7pauf3xjxk" path="res://Exorcism/Sprites/catalogue.png" id="11_5hked"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5hked"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c3fos"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hr6i8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rypft"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_065et"]
 
 [node name="Exorcism" type="Control" unique_id=1184818705]
 layout_mode = 3
@@ -126,10 +136,15 @@ layout_mode = 2
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 0
 offset_left = 320.0
-offset_top = 548.0
+offset_top = 486.0
 offset_right = 843.0
-offset_bottom = 805.0
-icon = ExtResource("3_m20rb")
+offset_bottom = 895.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_5hked")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_c3fos")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_hr6i8")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_rypft")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_065et")
+icon = ExtResource("11_5hked")
 icon_alignment = 1
 
 [node name="Demons" type="CanvasLayer" parent="." unique_id=525886575]

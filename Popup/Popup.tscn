@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bguxvwiuwuljn"]
+
+[ext_resource type="Script" uid="uid://bv27w2xdbhcak" path="res://Popup/popup.gd" id="1_6mo2q"]
+
+[node name="Popup" type="Control" unique_id=1869491001]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6mo2q")
+
+[node name="Panel" type="Panel" parent="." unique_id=1548934215]
+layout_mode = 0
+offset_right = 184.0
+offset_bottom = 167.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel" unique_id=1029908922]
+layout_mode = 0
+offset_right = 185.0
+offset_bottom = 166.0

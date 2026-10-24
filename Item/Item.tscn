@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://b8bfxb8v0sicl"]
+
+[ext_resource type="Script" uid="uid://yf6cy8716xo0" path="res://Item/Items/Scripts/item_manager.gd" id="1_3xii1"]
+[ext_resource type="Texture2D" uid="uid://lmev3mxrdbn8" path="res://Exorcism/Sprites/cruzona_foda_padre.png" id="4_bya13"]
+
+[node name="Item" type="Control" unique_id=1218815590]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_3xii1")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1044240875]
+layout_mode = 0
+offset_right = 105.0
+offset_bottom = 95.0
+texture = ExtResource("4_bya13")
+expand_mode = 1
+stretch_mode = 5
