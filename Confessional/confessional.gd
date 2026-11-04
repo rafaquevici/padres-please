@@ -20,7 +20,6 @@ func _ready() -> void:
 	npc = generator.generate_npc()
 	GameState.current_npc = npc
 	cross_animation()
-	
 	type_text(npc.dialogue.dialogues[0])
 	npc_name.text = npc.name
 	
@@ -46,7 +45,10 @@ func _on_forgive_pressed() -> void:
 	else:
 		consequence= FORGIVE_ATORMENTED_PERSON_1.dialogues.pick_random()
 	await type_text(consequence)
-	await get_tree().create_timer(5.0).timeout
+	if npc.possessed:
+		await get_tree().create_timer(10.0).timeout
+	else:
+		await get_tree().create_timer(5.0).timeout
 	@warning_ignore("redundant_await")
 	await generate_next_npc()
 	decision_locked = false

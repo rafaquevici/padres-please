@@ -26,7 +26,6 @@ func generate_dialogues(possessed: bool) -> DialogueBlock:
 		return database.normalDialogue.pick_random() 
 
 func generate_npc() -> NpcData:
-	
 	var npc = NpcData.new()
 	
 	npc.Initiate_Name(generate_names()) 
