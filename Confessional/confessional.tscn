@@ -173,7 +173,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_n5voe")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Cursed",
 "speed": 5.0
 }, {
@@ -190,7 +190,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vmcj5")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 5.0
 }]
@@ -308,8 +308,8 @@ theme_override_font_sizes/font_size = 56
 text = "05:00"
 
 [node name="Cross" type="AnimatedSprite2D" parent="Control" unique_id=625523237]
-position = Vector2(576, 609)
-scale = Vector2(1.5, 1.5)
+position = Vector2(581, 812)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_82yn7")
 
 [node name="LetterSound" type="AudioStreamPlayer" parent="." unique_id=1239634167]

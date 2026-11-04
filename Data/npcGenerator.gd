@@ -7,7 +7,7 @@ var database: NpcDatabase
 func _init(database: NpcDatabase):
 	self.database = database
 
-func generate_Sprites() -> Texture2D:
+func generate_Sprites() -> SpriteFrames:
 	return database.sprites.pick_random()
 
 func generate_names() -> String:

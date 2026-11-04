@@ -1,10 +1,10 @@
 extends CanvasLayer
 
 @export var database: NpcDatabase
-
 var npc: NpcData
 var typing_speed: float = 0.035
 var typing: bool = false
+var decision_locked: bool = false
 @onready var dialogue: Label = $Control/Dialogue
 @onready var controlDialogue: int = 0 
 @onready var npc_name: Label = $Control/NpcName
@@ -13,22 +13,20 @@ const FORGIVE_DEMON_DIALOGUES_1 = preload("uid://dorycj301yjke")
 @onready var timer_label: Label = $Control/TimerLabel
 @onready var cross: AnimatedSprite2D = $Control/Cross
 @onready var letter_sound: AudioStreamPlayer = $LetterSound
-
+var generator: NpcGenerator
 
 func _ready() -> void:
-	var generator = NpcGenerator.new(database)
+	generator = NpcGenerator.new(database)
 	npc = generator.generate_npc()
 	GameState.current_npc = npc
 	cross_animation()
-	print(npc.name)
-	print(npc.possessed)
 	
 	type_text(npc.dialogue.dialogues[0])
 	npc_name.text = npc.name
 	
 
 func _on_talk_more_pressed() -> void:
-	if typing:
+	if typing or decision_locked:
 		return
 	if controlDialogue < 2:
 		controlDialogue = controlDialogue + 1
@@ -37,14 +35,26 @@ func _on_talk_more_pressed() -> void:
 		dialogue.text = "..."
 
 func _on_forgive_pressed() -> void:
+	if typing or decision_locked:
+		return
+	
+	decision_locked = true
+	@warning_ignore("unused_variable")
+	var consequence: String
 	if npc.possessed:
-		type_text(FORGIVE_DEMON_DIALOGUES_1.dialogues.pick_random())
+		consequence = FORGIVE_DEMON_DIALOGUES_1.dialogues.pick_random()
 	else:
-		type_text(FORGIVE_ATORMENTED_PERSON_1.dialogues.pick_random())
+		consequence= FORGIVE_ATORMENTED_PERSON_1.dialogues.pick_random()
+	await type_text(consequence)
+	await get_tree().create_timer(5.0).timeout
+	@warning_ignore("redundant_await")
+	await generate_next_npc()
+	decision_locked = false
 
 func _on_exorcism_pressed() -> void:
+	if typing or decision_locked:
+		return
 	get_tree().change_scene_to_file("res://Exorcism/Exorcism.tscn")
-
 
 func update_timer_display() -> void:
 	var seconds = int(ceil(GameState.time_remaining))
@@ -75,3 +85,12 @@ func type_text(text_to_type: String) -> void:
 		await get_tree().create_timer(typing_speed).timeout
 
 	typing = false
+
+func generate_next_npc() -> void:
+	npc = generator.generate_npc()
+	GameState.current_npc = npc
+
+	controlDialogue = 0
+	npc_name.text = npc.name
+	cross_animation()
+	type_text(npc.dialogue.dialogues[0])
