@@ -4,12 +4,12 @@ extends Control
 # Filhos cena
 @onready var catalog_button: Button = $Scenario/CatalogButton
 @onready var demon_catalog: Control = $DemonCatalog
+var incensary_instance: Node2D
 @onready var cursor: TextureRect = $Cursor
 @onready var item_cross: Button = $Scenario/ItemContainer1/ItemCross
+@onready var incensary: Button = $Scenario/ItemContainer2/Incensary
 @onready var demon_type_obsessive: Control = $Demons/DemonTypeObsessive
 @onready var scenario: Control = $Scenario
-
-
 
 @export var possessive_demons: Array[DemonData]
 @export var obsessive_demons: Array[DemonData]
@@ -17,12 +17,14 @@ extends Control
 @export var closed_hand: Texture2D
 @export var holding_cross_hand: Texture2D
 @export var item_cross_texture: Texture2D
+@export var incensary_texture: Texture2D
 
 var current_demon_type: DemonData.DemonType 
 var current_demon: DemonData
-var is_possessed: bool = false
+var is_possessed: bool = true
 
 var animation_scene = preload("res://Animations/Characters.tscn")
+var incensary_scene = preload("res://Incensary/Incensary.tscn")
 
 func _ready():
 	_get_character("genova", true)
@@ -35,9 +37,8 @@ func _ready():
 	catalog_button.pressed.connect(_open_catalog)
 	demon_catalog.not_visible.connect(_on_catalog_visibility_changed)
 	item_cross.pressed.connect(_on_item_cross_pressed)
+	incensary.pressed.connect(_on_item_incencary_pressed)
 
-
-	
 func _define_cursor():
 	if cursor.texture == closed_hand:
 		cursor.expand_mode = TextureRect.EXPAND_KEEP_SIZE
@@ -52,9 +53,14 @@ func _process(delta: float):
 	var half_size: Vector2 = cursor.size / 2.0
 	cursor.global_position = mouse_pos - half_size
 	if mouse_pos.y > (window_size.y - 10) and scenario.position.y > -250:
-		scenario.position.y -= velocidade * delta	
+		scenario.position.y -= velocidade * delta
+		if 	demon_type_obsessive:
+			demon_type_obsessive.position.y -= velocidade * delta
 	elif mouse_pos.y < 10 and scenario.position.y < 250:
 		scenario.position.y += velocidade * delta
+		if 	demon_type_obsessive:
+			demon_type_obsessive.position.y += velocidade * delta
+		
 	
 func _get_character(name: String, is_animated_p: bool):
 	var new_character = animation_scene.instantiate()
@@ -72,11 +78,26 @@ func _on_item_cross_pressed():
 		item_cross.icon = item_cross_texture
 		GameState.item_in_hand = null
 		cursor.texture = closed_hand
+		
+func _on_item_incencary_pressed():
+	if incensary_instance == null:
+		incensary_instance = incensary_scene.instantiate()
+		incensary_instance.position = get_global_mouse_position()
+		add_child(incensary_instance)
+		GameState.item_in_hand = incensary
+		incensary.icon = null
+		cursor.texture = null
+	else:
+		incensary.icon = incensary_texture
+		GameState.item_in_hand = null
+		incensary_instance.queue_free()
+		incensary_instance = null
+		cursor.texture = closed_hand
 	
 func _randomize_demon():
 	if is_possessed:
 		var roll: float = randf()
-		current_demon_type = DemonData.DemonType.OBSESSIVE if roll < 0.7 else DemonData.DemonType.POSSESSIVE
+		current_demon_type = DemonData.DemonType.OBSESSIVE if roll < 1 else DemonData.DemonType.POSSESSIVE
 		if current_demon_type == DemonData.DemonType.OBSESSIVE:
 			current_demon = obsessive_demons.pick_random()
 		else:

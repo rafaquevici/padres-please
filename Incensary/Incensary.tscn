@@ -3,8 +3,46 @@
 [ext_resource type="Script" uid="uid://dxl5ex3bbyvu1" path="res://Incensary/incensary.gd" id="1_5672m"]
 [ext_resource type="Texture2D" uid="uid://cjlo3myhmdmd3" path="res://Incensary/turibulunm sem corrente.png" id="1_jj1r3"]
 [ext_resource type="Texture2D" uid="uid://brsdt8qwmiqlt" path="res://Incensary/mao do turibulunm.png" id="1_n4n8a"]
+[ext_resource type="Texture2D" uid="uid://cwv6s5l4hoo1d" path="res://Incensary/smoke (2).png" id="2_0ddbo"]
 [ext_resource type="Texture2D" uid="uid://cfcsdxspcom30" path="res://Item/Sprites/aro largo corrente.png" id="2_jj1r3"]
 [ext_resource type="Script" uid="uid://5bhndjfmm6vh" path="res://Incensary/anchor.gd" id="3_4uue7"]
+
+[sub_resource type="Curve" id="Curve_qmrih"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.35947716, 0.5617978), 0.0, 0.0, 0, 0, Vector2(0.7385621, 0.5617978), 0.0, 0.0, 0, 0, Vector2(0.9738563, 0.022471905), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_w7cfb"]
+curve = SubResource("Curve_qmrih")
+
+[sub_resource type="Gradient" id="Gradient_0ddbo"]
+offsets = PackedFloat32Array(0.22834645, 0.6062992, 1)
+colors = PackedColorArray(0.74978, 0.7497801, 0.74977976, 1, 0.7835232, 0.78352356, 0.78352314, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qmrih"]
+gradient = SubResource("Gradient_0ddbo")
+
+[sub_resource type="Curve" id="Curve_0ddbo"]
+_data = [Vector2(0, 0.34831464), 0.0, 0.0, 0, 0, Vector2(0.1764706, 0.37078655), 0.0, 0.0, 0, 0, Vector2(0.62091506, 0.75280905), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_qmrih"]
+curve = SubResource("Curve_0ddbo")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_e4eud"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(1.5, 2, 1)
+emission_shape = 1
+emission_sphere_radius = 14.4
+direction = Vector3(1, -1, 0)
+spread = 180.0
+initial_velocity_max = 50.01
+gravity = Vector3(0, -10, 0)
+damping_min = 2.0
+damping_max = 4.0
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_qmrih")
+color_initial_ramp = SubResource("GradientTexture1D_qmrih")
+alpha_curve = SubResource("CurveTexture_w7cfb")
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0ddbo"]
 radius = 52.0
@@ -18,636 +56,650 @@ height = 76.0
 radius = 4.0
 height = 12.0
 
-[node name="Incensary" type="Node2D" unique_id=715411100]
+[node name="Incensary_scene" type="Node2D" unique_id=715411100]
+z_index = 10
 script = ExtResource("1_5672m")
 
-[node name="incensary" type="RigidBody2D" parent="." unique_id=1360350081]
-position = Vector2(-48, 26)
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1666564859]
+position = Vector2(-4, 290)
+amount = 3000
+amount_ratio = 0.5
+texture = ExtResource("2_0ddbo")
+lifetime = 4.77
+preprocess = 4.0
+draw_order = 2
+process_material = SubResource("ParticleProcessMaterial_e4eud")
+
+[node name="Object" type="Node2D" parent="." unique_id=1565653659]
+
+[node name="incensary" type="RigidBody2D" parent="Object" unique_id=1360350081]
+position = Vector2(-583, -82)
 mass = 10.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="incensary" unique_id=1623669409]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/incensary" unique_id=1623669409]
 position = Vector2(578, 322)
 shape = SubResource("CapsuleShape2D_0ddbo")
 
-[node name="Sprite2D" type="Sprite2D" parent="incensary" unique_id=711240851]
+[node name="Sprite2D" type="Sprite2D" parent="Object/incensary" unique_id=711240851]
 position = Vector2(576, 173)
 texture = ExtResource("1_jj1r3")
 
-[node name="PinJoint2D" type="PinJoint2D" parent="." unique_id=2089688037]
-position = Vector2(531, 143)
+[node name="Marker2D" type="Marker2D" parent="Object/incensary" unique_id=1163647451]
+position = Vector2(581, 371)
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Object" unique_id=2089688037]
+position = Vector2(-4, 35)
 node_a = NodePath("../Anchor")
 node_b = NodePath("../segment")
 
-[node name="PinJoint2D2" type="PinJoint2D" parent="." unique_id=731267714]
-position = Vector2(531, 153)
+[node name="PinJoint2D2" type="PinJoint2D" parent="Object" unique_id=731267714]
+position = Vector2(-4, 45)
 node_a = NodePath("../segment")
 node_b = NodePath("../segment2")
 
-[node name="PinJoint2D3" type="PinJoint2D" parent="." unique_id=158593636]
-position = Vector2(531, 163)
+[node name="PinJoint2D3" type="PinJoint2D" parent="Object" unique_id=158593636]
+position = Vector2(-4, 55)
 node_a = NodePath("../segment2")
 node_b = NodePath("../segment3")
 
-[node name="PinJoint2D4" type="PinJoint2D" parent="." unique_id=1511963377]
-position = Vector2(531, 173)
+[node name="PinJoint2D4" type="PinJoint2D" parent="Object" unique_id=1511963377]
+position = Vector2(-4, 65)
 node_a = NodePath("../segment3")
 node_b = NodePath("../segment4")
 
-[node name="PinJoint2D5" type="PinJoint2D" parent="." unique_id=1805999400]
-position = Vector2(531, 184)
+[node name="PinJoint2D5" type="PinJoint2D" parent="Object" unique_id=1805999400]
+position = Vector2(-4, 76)
 node_a = NodePath("../segment4")
 node_b = NodePath("../segment5")
 
-[node name="PinJoint2D6" type="PinJoint2D" parent="." unique_id=1557465791]
-position = Vector2(531, 193)
+[node name="PinJoint2D6" type="PinJoint2D" parent="Object" unique_id=1557465791]
+position = Vector2(-4, 85)
 node_a = NodePath("../segment5")
 node_b = NodePath("../segment6")
 
-[node name="PinJoint2D7" type="PinJoint2D" parent="." unique_id=532790665]
-position = Vector2(531, 204)
+[node name="PinJoint2D7" type="PinJoint2D" parent="Object" unique_id=532790665]
+position = Vector2(-4, 96)
 node_a = NodePath("../segment6")
 node_b = NodePath("../segment7")
 
-[node name="PinJoint2D8" type="PinJoint2D" parent="." unique_id=2018856445]
-position = Vector2(531, 214)
+[node name="PinJoint2D8" type="PinJoint2D" parent="Object" unique_id=2018856445]
+position = Vector2(-4, 106)
 node_a = NodePath("../segment7")
 node_b = NodePath("../segment8")
 
-[node name="PinJoint2D9" type="PinJoint2D" parent="." unique_id=825203376]
-position = Vector2(531, 225)
+[node name="PinJoint2D9" type="PinJoint2D" parent="Object" unique_id=825203376]
+position = Vector2(-4, 117)
 node_a = NodePath("../segment8")
 node_b = NodePath("../segment9")
 
-[node name="PinJoint2D10" type="PinJoint2D" parent="." unique_id=775446859]
-position = Vector2(531, 236)
+[node name="PinJoint2D10" type="PinJoint2D" parent="Object" unique_id=775446859]
+position = Vector2(-4, 128)
 node_a = NodePath("../segment9")
 node_b = NodePath("../segment10")
 
-[node name="PinJoint2D11" type="PinJoint2D" parent="." unique_id=934336595]
-position = Vector2(531, 245)
+[node name="PinJoint2D11" type="PinJoint2D" parent="Object" unique_id=934336595]
+position = Vector2(-4, 137)
 node_a = NodePath("../segment10")
 node_b = NodePath("../segment11")
 
-[node name="PinJoint2D12" type="PinJoint2D" parent="." unique_id=661634336]
-position = Vector2(531, 256)
+[node name="PinJoint2D12" type="PinJoint2D" parent="Object" unique_id=661634336]
+position = Vector2(-4, 148)
 node_a = NodePath("../segment11")
 node_b = NodePath("../segment12")
 
-[node name="PinJoint2D13" type="PinJoint2D" parent="." unique_id=631483962]
-position = Vector2(531, 266)
+[node name="PinJoint2D13" type="PinJoint2D" parent="Object" unique_id=631483962]
+position = Vector2(-4, 158)
 node_a = NodePath("../segment12")
 node_b = NodePath("../segment13")
 
-[node name="PinJoint2D14" type="PinJoint2D" parent="." unique_id=1302859711]
-position = Vector2(531, 276)
+[node name="PinJoint2D14" type="PinJoint2D" parent="Object" unique_id=1302859711]
+position = Vector2(-4, 168)
 node_a = NodePath("../segment13")
 node_b = NodePath("../segment14")
 
-[node name="PinJoint2D15" type="PinJoint2D" parent="." unique_id=172755121]
-position = Vector2(531, 286)
+[node name="PinJoint2D15" type="PinJoint2D" parent="Object" unique_id=172755121]
+position = Vector2(-4, 178)
 node_a = NodePath("../segment14")
 node_b = NodePath("../segment15")
 
-[node name="PinJoint2D16" type="PinJoint2D" parent="." unique_id=1031311279]
-position = Vector2(531, 296)
+[node name="PinJoint2D16" type="PinJoint2D" parent="Object" unique_id=1031311279]
+position = Vector2(-4, 188)
 node_a = NodePath("../segment15")
 node_b = NodePath("../incensary")
 
-[node name="PinJoint2D17" type="PinJoint2D" parent="." unique_id=1352275791]
-position = Vector2(527, 145)
+[node name="PinJoint2D17" type="PinJoint2D" parent="Object" unique_id=1352275791]
+position = Vector2(-8, 37)
 node_a = NodePath("../Anchor")
 node_b = NodePath("../segment16")
 
-[node name="PinJoint2D18" type="PinJoint2D" parent="." unique_id=1668760189]
-position = Vector2(525, 154)
+[node name="PinJoint2D18" type="PinJoint2D" parent="Object" unique_id=1668760189]
+position = Vector2(-10, 46)
 rotation = 0.11117946
 node_a = NodePath("../segment16")
 node_b = NodePath("../segment17")
 
-[node name="PinJoint2D19" type="PinJoint2D" parent="." unique_id=1341939323]
-position = Vector2(522.99994, 164)
+[node name="PinJoint2D19" type="PinJoint2D" parent="Object" unique_id=1341939323]
+position = Vector2(-12.000061, 56)
 rotation = 0.11117946
 node_a = NodePath("../segment17")
 node_b = NodePath("../segment18")
 
-[node name="PinJoint2D20" type="PinJoint2D" parent="." unique_id=1577021415]
-position = Vector2(521, 174.00002)
+[node name="PinJoint2D20" type="PinJoint2D" parent="Object" unique_id=1577021415]
+position = Vector2(-14, 66.000015)
 rotation = 0.11117946
 node_a = NodePath("../segment18")
 node_b = NodePath("../segment19")
 
-[node name="PinJoint2D21" type="PinJoint2D" parent="." unique_id=1929780255]
-position = Vector2(519, 184)
+[node name="PinJoint2D21" type="PinJoint2D" parent="Object" unique_id=1929780255]
+position = Vector2(-16, 76)
 rotation = 0.11117946
 node_a = NodePath("../segment19")
 node_b = NodePath("../segment20")
 
-[node name="PinJoint2D22" type="PinJoint2D" parent="." unique_id=135330685]
-position = Vector2(517, 194)
+[node name="PinJoint2D22" type="PinJoint2D" parent="Object" unique_id=135330685]
+position = Vector2(-17.999939, 86.000015)
 rotation = 0.21179336
+scale = Vector2(0.99999994, 0.99999994)
 node_a = NodePath("../segment20")
 node_b = NodePath("../segment21")
 
-[node name="PinJoint2D23" type="PinJoint2D" parent="." unique_id=2057365909]
-position = Vector2(515, 204.00002)
+[node name="PinJoint2D23" type="PinJoint2D" parent="Object" unique_id=2057365909]
+position = Vector2(-19.999939, 96.00003)
 rotation = 0.21179336
+scale = Vector2(0.99999994, 0.99999994)
 node_a = NodePath("../segment21")
 node_b = NodePath("../segment22")
 
-[node name="PinJoint2D24" type="PinJoint2D" parent="." unique_id=15361937]
-position = Vector2(512, 214.00002)
+[node name="PinJoint2D24" type="PinJoint2D" parent="Object" unique_id=15361937]
+position = Vector2(-22.999939, 106.00003)
 rotation = 0.21179336
+scale = Vector2(0.99999994, 0.99999994)
 node_a = NodePath("../segment22")
 node_b = NodePath("../segment23")
 
-[node name="PinJoint2D25" type="PinJoint2D" parent="." unique_id=111296966]
-position = Vector2(510.00006, 224.00002)
+[node name="PinJoint2D25" type="PinJoint2D" parent="Object" unique_id=111296966]
+position = Vector2(-24.999878, 116.00003)
 rotation = 0.21179336
+scale = Vector2(0.99999994, 0.99999994)
 node_a = NodePath("../segment23")
 node_b = NodePath("../segment24")
 
-[node name="PinJoint2D26" type="PinJoint2D" parent="." unique_id=259864733]
-position = Vector2(508.00003, 234.00002)
+[node name="PinJoint2D26" type="PinJoint2D" parent="Object" unique_id=259864733]
+position = Vector2(-26.999908, 126.00003)
 rotation = 0.21179336
+scale = Vector2(0.99999994, 0.99999994)
 node_a = NodePath("../segment24")
 node_b = NodePath("../segment25")
 
-[node name="PinJoint2D27" type="PinJoint2D" parent="." unique_id=1530654220]
-position = Vector2(506.00003, 244.00002)
+[node name="PinJoint2D27" type="PinJoint2D" parent="Object" unique_id=1530654220]
+position = Vector2(-28.999908, 136.00003)
 rotation = 0.21179336
+scale = Vector2(0.99999994, 0.99999994)
 node_a = NodePath("../segment25")
 node_b = NodePath("../segment26")
 
-[node name="PinJoint2D28" type="PinJoint2D" parent="." unique_id=1351046824]
-position = Vector2(503.00003, 254)
+[node name="PinJoint2D28" type="PinJoint2D" parent="Object" unique_id=1351046824]
+position = Vector2(-31.999908, 146.00002)
 rotation = 0.21179336
+scale = Vector2(0.99999994, 0.99999994)
 node_a = NodePath("../segment26")
 node_b = NodePath("../segment27")
 
-[node name="PinJoint2D29" type="PinJoint2D" parent="." unique_id=1353403391]
-position = Vector2(501.00006, 264.00003)
+[node name="PinJoint2D29" type="PinJoint2D" parent="Object" unique_id=1353403391]
+position = Vector2(-33.999878, 156.00005)
 rotation = 0.21179336
+scale = Vector2(0.99999994, 0.99999994)
 node_a = NodePath("../segment27")
 node_b = NodePath("../segment28")
 
-[node name="PinJoint2D30" type="PinJoint2D" parent="." unique_id=1315543484]
-position = Vector2(499.00003, 273)
+[node name="PinJoint2D30" type="PinJoint2D" parent="Object" unique_id=1315543484]
+position = Vector2(-35.99991, 165.00002)
 rotation = 0.21179336
+scale = Vector2(0.99999994, 0.99999994)
 node_a = NodePath("../segment28")
 node_b = NodePath("../segment29")
 
-[node name="PinJoint2D31" type="PinJoint2D" parent="." unique_id=1898588395]
-position = Vector2(496.00003, 283)
+[node name="PinJoint2D31" type="PinJoint2D" parent="Object" unique_id=1898588395]
+position = Vector2(-38.99991, 175.00002)
 rotation = 0.21179336
+scale = Vector2(0.99999994, 0.99999994)
 node_a = NodePath("../segment29")
 node_b = NodePath("../segment30")
 
-[node name="PinJoint2D32" type="PinJoint2D" parent="." unique_id=932612965]
-position = Vector2(493.00003, 293.00003)
+[node name="PinJoint2D32" type="PinJoint2D" parent="Object" unique_id=932612965]
+position = Vector2(-41.99991, 185.00005)
 rotation = 0.21179336
+scale = Vector2(0.99999994, 0.99999994)
 node_a = NodePath("../segment30")
 node_b = NodePath("../segment31")
 
-[node name="PinJoint2D33" type="PinJoint2D" parent="." unique_id=758206173]
-position = Vector2(489.99997, 303.00003)
+[node name="PinJoint2D33" type="PinJoint2D" parent="Object" unique_id=758206173]
+position = Vector2(-44.99997, 195.00005)
 rotation = 0.21179336
+scale = Vector2(0.99999994, 0.99999994)
 node_a = NodePath("../segment31")
 node_b = NodePath("../segment32")
 
-[node name="PinJoint2D34" type="PinJoint2D" parent="." unique_id=665249425]
-position = Vector2(489.00003, 313.00003)
+[node name="PinJoint2D34" type="PinJoint2D" parent="Object" unique_id=665249425]
+position = Vector2(-45.99991, 205.00005)
 rotation = 0.21179336
+scale = Vector2(0.99999994, 0.99999994)
 node_a = NodePath("../segment32")
 node_b = NodePath("../segment33")
 
-[node name="PinJoint2D35" type="PinJoint2D" parent="." unique_id=1397838108]
-position = Vector2(487.00006, 322.00003)
+[node name="PinJoint2D35" type="PinJoint2D" parent="Object" unique_id=1397838108]
+position = Vector2(-47.99994, 214.00003)
 rotation = -0.009562507
 node_a = NodePath("../segment33")
 node_b = NodePath("../incensary")
 
-[node name="PinJoint2D36" type="PinJoint2D" parent="." unique_id=59028270]
-position = Vector2(533, 143.00002)
+[node name="PinJoint2D36" type="PinJoint2D" parent="Object" unique_id=59028270]
+position = Vector2(-2, 35.000015)
 rotation = -0.009562507
 node_a = NodePath("../Anchor")
 node_b = NodePath("../segment34")
 
-[node name="PinJoint2D37" type="PinJoint2D" parent="." unique_id=800816054]
-position = Vector2(534, 153)
-rotation = -0.08124542
+[node name="PinJoint2D37" type="PinJoint2D" parent="Object" unique_id=800816054]
+position = Vector2(-1, 45)
+rotation = -0.0812454
 node_a = NodePath("../segment34")
 node_b = NodePath("../segment35")
 
-[node name="PinJoint2D38" type="PinJoint2D" parent="." unique_id=1102016838]
-position = Vector2(536.00006, 163)
-rotation = -0.08124542
+[node name="PinJoint2D38" type="PinJoint2D" parent="Object" unique_id=1102016838]
+position = Vector2(1.000061, 55)
+rotation = -0.0812454
 node_a = NodePath("../segment35")
 node_b = NodePath("../segment36")
 
-[node name="PinJoint2D39" type="PinJoint2D" parent="." unique_id=1655159176]
-position = Vector2(537, 173)
-rotation = -0.08124542
+[node name="PinJoint2D39" type="PinJoint2D" parent="Object" unique_id=1655159176]
+position = Vector2(2, 65)
+rotation = -0.0812454
 node_a = NodePath("../segment36")
 node_b = NodePath("../segment37")
 
-[node name="PinJoint2D40" type="PinJoint2D" parent="." unique_id=2020616013]
-position = Vector2(538, 183.00002)
-rotation = -0.08124542
+[node name="PinJoint2D40" type="PinJoint2D" parent="Object" unique_id=2020616013]
+position = Vector2(3, 75.000015)
+rotation = -0.0812454
 node_a = NodePath("../segment37")
 node_b = NodePath("../segment38")
 
-[node name="PinJoint2D41" type="PinJoint2D" parent="." unique_id=1961218698]
-position = Vector2(540, 193.00002)
-rotation = -0.08124542
+[node name="PinJoint2D41" type="PinJoint2D" parent="Object" unique_id=1961218698]
+position = Vector2(5, 85.000015)
+rotation = -0.0812454
 node_a = NodePath("../segment38")
 node_b = NodePath("../segment39")
 
-[node name="PinJoint2D42" type="PinJoint2D" parent="." unique_id=48444805]
-position = Vector2(541, 203.00002)
-rotation = -0.08124542
+[node name="PinJoint2D42" type="PinJoint2D" parent="Object" unique_id=48444805]
+position = Vector2(6, 95.000015)
+rotation = -0.0812454
 node_a = NodePath("../segment39")
 node_b = NodePath("../segment40")
 
-[node name="PinJoint2D43" type="PinJoint2D" parent="." unique_id=844821039]
-position = Vector2(542, 213.00002)
-rotation = -0.08124542
+[node name="PinJoint2D43" type="PinJoint2D" parent="Object" unique_id=844821039]
+position = Vector2(7, 105.000015)
+rotation = -0.0812454
 node_a = NodePath("../segment40")
 node_b = NodePath("../segment41")
 
-[node name="PinJoint2D44" type="PinJoint2D" parent="." unique_id=890135069]
-position = Vector2(543, 223)
-rotation = -0.08124542
+[node name="PinJoint2D44" type="PinJoint2D" parent="Object" unique_id=890135069]
+position = Vector2(8, 115)
+rotation = -0.0812454
 node_a = NodePath("../segment40")
 node_b = NodePath("../segment41")
 
-[node name="PinJoint2D45" type="PinJoint2D" parent="." unique_id=755965238]
-position = Vector2(543, 223)
-rotation = -0.08124542
+[node name="PinJoint2D45" type="PinJoint2D" parent="Object" unique_id=755965238]
+position = Vector2(8, 115)
+rotation = -0.0812454
 node_a = NodePath("../segment41")
 node_b = NodePath("../segment42")
 
-[node name="PinJoint2D46" type="PinJoint2D" parent="." unique_id=1821654995]
-position = Vector2(544, 233)
-rotation = -0.08124542
+[node name="PinJoint2D46" type="PinJoint2D" parent="Object" unique_id=1821654995]
+position = Vector2(9, 125)
+rotation = -0.0812454
 node_a = NodePath("../segment42")
 node_b = NodePath("../segment43")
 
-[node name="PinJoint2D47" type="PinJoint2D" parent="." unique_id=214717226]
-position = Vector2(545, 243.00003)
-rotation = -0.08124542
+[node name="PinJoint2D47" type="PinJoint2D" parent="Object" unique_id=214717226]
+position = Vector2(10, 135.00003)
+rotation = -0.0812454
 node_a = NodePath("../segment43")
 node_b = NodePath("../segment44")
 
-[node name="PinJoint2D48" type="PinJoint2D" parent="." unique_id=1525476495]
-position = Vector2(546, 253.00002)
-rotation = -0.08124542
+[node name="PinJoint2D48" type="PinJoint2D" parent="Object" unique_id=1525476495]
+position = Vector2(11, 145.00002)
+rotation = -0.0812454
 node_a = NodePath("../segment44")
 node_b = NodePath("../segment45")
 
-[node name="PinJoint2D49" type="PinJoint2D" parent="." unique_id=1732846876]
-position = Vector2(548, 263)
-rotation = -0.08124542
+[node name="PinJoint2D49" type="PinJoint2D" parent="Object" unique_id=1732846876]
+position = Vector2(13, 155)
+rotation = -0.0812454
 node_a = NodePath("../segment45")
 node_b = NodePath("../segment46")
 
-[node name="PinJoint2D50" type="PinJoint2D" parent="." unique_id=1141645494]
-position = Vector2(548, 273.00003)
-rotation = -0.08124542
+[node name="PinJoint2D50" type="PinJoint2D" parent="Object" unique_id=1141645494]
+position = Vector2(13, 165.00003)
+rotation = -0.0812454
 node_a = NodePath("../segment46")
 node_b = NodePath("../segment47")
 
-[node name="PinJoint2D51" type="PinJoint2D" parent="." unique_id=920140392]
-position = Vector2(549, 283.00003)
-rotation = -0.08124542
+[node name="PinJoint2D51" type="PinJoint2D" parent="Object" unique_id=920140392]
+position = Vector2(14, 175.00003)
+rotation = -0.0812454
 node_a = NodePath("../segment47")
 node_b = NodePath("../segment48")
 
-[node name="PinJoint2D52" type="PinJoint2D" parent="." unique_id=671769514]
-position = Vector2(550, 293)
-rotation = -0.08124542
+[node name="PinJoint2D52" type="PinJoint2D" parent="Object" unique_id=671769514]
+position = Vector2(15, 185)
+rotation = -0.0812454
 node_a = NodePath("../segment48")
 node_b = NodePath("../segment49")
 
-[node name="PinJoint2D53" type="PinJoint2D" parent="." unique_id=1714784303]
-position = Vector2(551, 303)
-rotation = -0.08124542
+[node name="PinJoint2D53" type="PinJoint2D" parent="Object" unique_id=1714784303]
+position = Vector2(16, 195)
+rotation = -0.0812454
 node_a = NodePath("../segment49")
 node_b = NodePath("../segment50")
 
-[node name="PinJoint2D54" type="PinJoint2D" parent="." unique_id=918208852]
-position = Vector2(551.00006, 312.99997)
-rotation = -0.08124542
+[node name="PinJoint2D54" type="PinJoint2D" parent="Object" unique_id=918208852]
+position = Vector2(16.000061, 204.99997)
+rotation = -0.0812454
 node_a = NodePath("../segment50")
 node_b = NodePath("../segment51")
 
-[node name="PinJoint2D55" type="PinJoint2D" parent="." unique_id=1608492220]
-position = Vector2(553.00006, 323.00003)
-rotation = -0.08124542
+[node name="PinJoint2D55" type="PinJoint2D" parent="Object" unique_id=1608492220]
+position = Vector2(18.000061, 215.00003)
+rotation = -0.0812454
 node_a = NodePath("../segment51")
 node_b = NodePath("../segment52")
 
-[node name="PinJoint2D56" type="PinJoint2D" parent="." unique_id=1025478357]
-position = Vector2(555, 333.00003)
-rotation = -0.08124542
+[node name="PinJoint2D56" type="PinJoint2D" parent="Object" unique_id=1025478357]
+position = Vector2(20, 225.00003)
+rotation = -0.0812454
 node_a = NodePath("../segment52")
 node_b = NodePath("../segment53")
 
-[node name="PinJoint2D57" type="PinJoint2D" parent="." unique_id=998098390]
-position = Vector2(555.00006, 340)
+[node name="PinJoint2D57" type="PinJoint2D" parent="Object" unique_id=998098390]
+position = Vector2(20, 231.99998)
 rotation = 0.00065650046
+scale = Vector2(0.9999998, 0.9999998)
 node_a = NodePath("../segment53")
 node_b = NodePath("../incensary")
 
-[node name="Anchor" type="AnimatableBody2D" parent="." unique_id=1121380666]
-position = Vector2(538, 225)
+[node name="Anchor" type="AnimatableBody2D" parent="Object" unique_id=1121380666]
+position = Vector2(-2, 242)
 script = ExtResource("3_4uue7")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Anchor" unique_id=1753688125]
-position = Vector2(0, -117)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/Anchor" unique_id=1753688125]
+position = Vector2(5, -242)
 shape = SubResource("CapsuleShape2D_5672m")
 
-[node name="Sprite2D" type="Sprite2D" parent="Anchor" unique_id=1357260819]
-position = Vector2(-1.9999999, 7.0000005)
+[node name="Sprite2D" type="Sprite2D" parent="Object/Anchor" unique_id=1357260819]
+position = Vector2(26.999998, -240)
+scale = Vector2(1.1064438, 1.0223953)
 texture = ExtResource("1_n4n8a")
+region_enabled = true
+region_rect = Rect2(259.39682, 229.54547, 148.7604, 118.181885)
 
-[node name="segment" type="RigidBody2D" parent="." unique_id=1476903973]
-position = Vector2(528, 224)
+[node name="segment" type="RigidBody2D" parent="Object" unique_id=1476903973]
+position = Vector2(-7, 116)
 mass = 0.5
 can_sleep = false
 linear_damp = 2.755
 angular_damp = 19.316
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="segment" unique_id=626140723]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/segment" unique_id=626140723]
 position = Vector2(3, -76)
 shape = SubResource("CapsuleShape2D_4uue7")
 
-[node name="Sprite2D" type="Sprite2D" parent="segment" unique_id=1473441851]
+[node name="Sprite2D" type="Sprite2D" parent="Object/segment" unique_id=1473441851]
 position = Vector2(3, -76)
 scale = Vector2(0.34375, 0.29166663)
 texture = ExtResource("2_jj1r3")
 
-[node name="segment2" type="RigidBody2D" parent="." unique_id=1814903121]
-position = Vector2(528, 234)
+[node name="segment2" type="RigidBody2D" parent="Object" unique_id=1814903121]
+position = Vector2(-7, 126)
 mass = 0.5
 can_sleep = false
 linear_damp = 2.755
 angular_damp = 19.316
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="segment2" unique_id=2033896338]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/segment2" unique_id=2033896338]
 position = Vector2(3, -76)
 shape = SubResource("CapsuleShape2D_4uue7")
 
-[node name="Sprite2D" type="Sprite2D" parent="segment2" unique_id=1956496441]
+[node name="Sprite2D" type="Sprite2D" parent="Object/segment2" unique_id=1956496441]
 position = Vector2(3, -76)
 scale = Vector2(0.34375, 0.29166663)
 texture = ExtResource("2_jj1r3")
 
-[node name="segment3" type="RigidBody2D" parent="." unique_id=1920719109]
-position = Vector2(528, 244)
+[node name="segment3" type="RigidBody2D" parent="Object" unique_id=1920719109]
+position = Vector2(-7, 136)
 mass = 0.5
 can_sleep = false
 linear_damp = 2.755
 angular_damp = 19.316
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="segment3" unique_id=1451321617]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/segment3" unique_id=1451321617]
 position = Vector2(3, -76)
 shape = SubResource("CapsuleShape2D_4uue7")
 
-[node name="Sprite2D" type="Sprite2D" parent="segment3" unique_id=1489743856]
+[node name="Sprite2D" type="Sprite2D" parent="Object/segment3" unique_id=1489743856]
 position = Vector2(3, -76)
 scale = Vector2(0.34375, 0.29166663)
 texture = ExtResource("2_jj1r3")
 
-[node name="segment4" type="RigidBody2D" parent="." unique_id=1558490861]
-position = Vector2(528, 255)
+[node name="segment4" type="RigidBody2D" parent="Object" unique_id=1558490861]
+position = Vector2(-7, 147)
 mass = 0.5
 can_sleep = false
 linear_damp = 2.755
 angular_damp = 19.316
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="segment4" unique_id=1065200261]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/segment4" unique_id=1065200261]
 position = Vector2(3, -76)
 shape = SubResource("CapsuleShape2D_4uue7")
 
-[node name="Sprite2D" type="Sprite2D" parent="segment4" unique_id=1926843967]
+[node name="Sprite2D" type="Sprite2D" parent="Object/segment4" unique_id=1926843967]
 position = Vector2(3, -76)
 scale = Vector2(0.34375, 0.29166663)
 texture = ExtResource("2_jj1r3")
 
-[node name="segment5" type="RigidBody2D" parent="." unique_id=94804033]
-position = Vector2(528, 265)
+[node name="segment5" type="RigidBody2D" parent="Object" unique_id=94804033]
+position = Vector2(-7, 157)
 mass = 0.5
 can_sleep = false
 linear_damp = 2.755
 angular_damp = 19.316
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="segment5" unique_id=2021173270]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/segment5" unique_id=2021173270]
 position = Vector2(3, -76)
 shape = SubResource("CapsuleShape2D_4uue7")
 
-[node name="Sprite2D" type="Sprite2D" parent="segment5" unique_id=798118615]
+[node name="Sprite2D" type="Sprite2D" parent="Object/segment5" unique_id=798118615]
 position = Vector2(3, -76)
 scale = Vector2(0.34375, 0.29166663)
 texture = ExtResource("2_jj1r3")
 
-[node name="segment6" type="RigidBody2D" parent="." unique_id=1602749431]
-position = Vector2(528, 275)
+[node name="segment6" type="RigidBody2D" parent="Object" unique_id=1602749431]
+position = Vector2(-7, 167)
 mass = 0.5
 can_sleep = false
 linear_damp = 2.755
 angular_damp = 19.316
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="segment6" unique_id=1113064593]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/segment6" unique_id=1113064593]
 position = Vector2(3, -76)
 shape = SubResource("CapsuleShape2D_4uue7")
 
-[node name="Sprite2D" type="Sprite2D" parent="segment6" unique_id=608614592]
+[node name="Sprite2D" type="Sprite2D" parent="Object/segment6" unique_id=608614592]
 position = Vector2(3, -76)
 scale = Vector2(0.34375, 0.29166663)
 texture = ExtResource("2_jj1r3")
 
-[node name="segment7" type="RigidBody2D" parent="." unique_id=295110890]
-position = Vector2(528, 285)
+[node name="segment7" type="RigidBody2D" parent="Object" unique_id=295110890]
+position = Vector2(-7, 177)
 mass = 0.5
 can_sleep = false
 linear_damp = 2.755
 angular_damp = 19.316
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="segment7" unique_id=14908639]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/segment7" unique_id=14908639]
 position = Vector2(3, -76)
 shape = SubResource("CapsuleShape2D_4uue7")
 
-[node name="Sprite2D" type="Sprite2D" parent="segment7" unique_id=1888632999]
+[node name="Sprite2D" type="Sprite2D" parent="Object/segment7" unique_id=1888632999]
 position = Vector2(3, -76)
 scale = Vector2(0.34375, 0.29166663)
 texture = ExtResource("2_jj1r3")
 
-[node name="segment8" type="RigidBody2D" parent="." unique_id=1557318275]
-position = Vector2(528, 296)
+[node name="segment8" type="RigidBody2D" parent="Object" unique_id=1557318275]
+position = Vector2(-7, 188)
 mass = 0.5
 can_sleep = false
 linear_damp = 2.755
 angular_damp = 19.316
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="segment8" unique_id=1978243370]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/segment8" unique_id=1978243370]
 position = Vector2(3, -76)
 shape = SubResource("CapsuleShape2D_4uue7")
 
-[node name="Sprite2D" type="Sprite2D" parent="segment8" unique_id=1980305100]
+[node name="Sprite2D" type="Sprite2D" parent="Object/segment8" unique_id=1980305100]
 position = Vector2(3, -76)
 scale = Vector2(0.34375, 0.29166663)
 texture = ExtResource("2_jj1r3")
 
-[node name="segment9" type="RigidBody2D" parent="." unique_id=1041170019]
-position = Vector2(528, 307)
+[node name="segment9" type="RigidBody2D" parent="Object" unique_id=1041170019]
+position = Vector2(-7, 199)
 mass = 0.5
 can_sleep = false
 linear_damp = 2.755
 angular_damp = 19.316
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="segment9" unique_id=707095064]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/segment9" unique_id=707095064]
 position = Vector2(3, -76)
 shape = SubResource("CapsuleShape2D_4uue7")
 
-[node name="Sprite2D" type="Sprite2D" parent="segment9" unique_id=207028590]
+[node name="Sprite2D" type="Sprite2D" parent="Object/segment9" unique_id=207028590]
 position = Vector2(3, -76)
 scale = Vector2(0.34375, 0.29166663)
 texture = ExtResource("2_jj1r3")
 
-[node name="segment10" type="RigidBody2D" parent="." unique_id=57110921]
-position = Vector2(528, 317)
+[node name="segment10" type="RigidBody2D" parent="Object" unique_id=57110921]
+position = Vector2(-7, 209)
 mass = 0.5
 can_sleep = false
 linear_damp = 2.755
 angular_damp = 19.316
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="segment10" unique_id=1556429452]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/segment10" unique_id=1556429452]
 position = Vector2(3, -76)
 shape = SubResource("CapsuleShape2D_4uue7")
 
-[node name="Sprite2D" type="Sprite2D" parent="segment10" unique_id=192188726]
+[node name="Sprite2D" type="Sprite2D" parent="Object/segment10" unique_id=192188726]
 position = Vector2(3, -76)
 scale = Vector2(0.34375, 0.29166663)
 texture = ExtResource("2_jj1r3")
 
-[node name="segment11" type="RigidBody2D" parent="." unique_id=909177816]
-position = Vector2(528, 327)
+[node name="segment11" type="RigidBody2D" parent="Object" unique_id=909177816]
+position = Vector2(-7, 219)
 mass = 0.5
 can_sleep = false
 linear_damp = 2.755
 angular_damp = 19.316
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="segment11" unique_id=1338292201]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/segment11" unique_id=1338292201]
 position = Vector2(3, -76)
 shape = SubResource("CapsuleShape2D_4uue7")
 
-[node name="Sprite2D" type="Sprite2D" parent="segment11" unique_id=288122934]
+[node name="Sprite2D" type="Sprite2D" parent="Object/segment11" unique_id=288122934]
 position = Vector2(3, -76)
 scale = Vector2(0.34375, 0.29166663)
 texture = ExtResource("2_jj1r3")
 
-[node name="segment12" type="RigidBody2D" parent="." unique_id=50132731]
-position = Vector2(528, 337)
+[node name="segment12" type="RigidBody2D" parent="Object" unique_id=50132731]
+position = Vector2(-7, 229)
 mass = 0.5
 can_sleep = false
 linear_damp = 2.755
 angular_damp = 19.316
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="segment12" unique_id=286162523]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/segment12" unique_id=286162523]
 position = Vector2(3, -76)
 shape = SubResource("CapsuleShape2D_4uue7")
 
-[node name="Sprite2D" type="Sprite2D" parent="segment12" unique_id=629333312]
+[node name="Sprite2D" type="Sprite2D" parent="Object/segment12" unique_id=629333312]
 position = Vector2(3, -76)
 scale = Vector2(0.34375, 0.29166663)
 texture = ExtResource("2_jj1r3")
 
-[node name="segment13" type="RigidBody2D" parent="." unique_id=1666323421]
-position = Vector2(528, 347)
+[node name="segment13" type="RigidBody2D" parent="Object" unique_id=1666323421]
+position = Vector2(-7, 239)
 mass = 0.5
 can_sleep = false
 linear_damp = 2.755
 angular_damp = 19.316
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="segment13" unique_id=1293292243]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/segment13" unique_id=1293292243]
 position = Vector2(3, -76)
 shape = SubResource("CapsuleShape2D_4uue7")
 
-[node name="Sprite2D" type="Sprite2D" parent="segment13" unique_id=1769899408]
+[node name="Sprite2D" type="Sprite2D" parent="Object/segment13" unique_id=1769899408]
 position = Vector2(3, -76)
 scale = Vector2(0.34375, 0.29166663)
 texture = ExtResource("2_jj1r3")
 
-[node name="segment14" type="RigidBody2D" parent="." unique_id=486849184]
-position = Vector2(528, 357)
+[node name="segment14" type="RigidBody2D" parent="Object" unique_id=486849184]
+position = Vector2(-7, 249)
 mass = 0.5
 can_sleep = false
 linear_damp = 2.755
 angular_damp = 19.316
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="segment14" unique_id=430784383]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/segment14" unique_id=430784383]
 position = Vector2(3, -76)
 shape = SubResource("CapsuleShape2D_4uue7")
 
-[node name="Sprite2D" type="Sprite2D" parent="segment14" unique_id=1013541561]
+[node name="Sprite2D" type="Sprite2D" parent="Object/segment14" unique_id=1013541561]
 position = Vector2(3, -76)
 scale = Vector2(0.34375, 0.29166663)
 texture = ExtResource("2_jj1r3")
 
-[node name="segment15" type="RigidBody2D" parent="." unique_id=1459746714]
-position = Vector2(528, 367)
+[node name="segment15" type="RigidBody2D" parent="Object" unique_id=1459746714]
+position = Vector2(-7, 259)
 mass = 0.5
 can_sleep = false
 linear_damp = 2.755
 angular_damp = 19.316
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="segment15" unique_id=1303286155]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/segment15" unique_id=1303286155]
 position = Vector2(3, -76)
 shape = SubResource("CapsuleShape2D_4uue7")
 
-[node name="Sprite2D" type="Sprite2D" parent="segment15" unique_id=980818858]
+[node name="Sprite2D" type="Sprite2D" parent="Object/segment15" unique_id=980818858]
 position = Vector2(3, -76)
 scale = Vector2(0.34375, 0.29166663)
 texture = ExtResource("2_jj1r3")
 
-[node name="segment16" type="RigidBody2D" parent="." unique_id=804798338]
-position = Vector2(508, 223.00002)
+[node name="segment16" type="RigidBody2D" parent="Object" unique_id=804798338]
+position = Vector2(-26.999939, 115.00002)
 rotation = 0.20242678
 mass = 0.5
 can_sleep = false
 linear_damp = 2.755
 angular_damp = 19.316
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="segment16" unique_id=368115175]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/segment16" unique_id=368115175]
 position = Vector2(3, -76)
 shape = SubResource("CapsuleShape2D_4uue7")
 
-[node name="Sprite2D" type="Sprite2D" parent="segment16" unique_id=683365533]
+[node name="Sprite2D" type="Sprite2D" parent="Object/segment16" unique_id=683365533]
 position = Vector2(3, -76)
 scale = Vector2(0.34375, 0.29166663)
 texture = ExtResource("2_jj1r3")
 
-[node name="segment17" type="RigidBody2D" parent="." unique_id=1059806288]
-position = Vector2(506, 233)
-rotation = 0.20242678
-collision_layer = 2
-collision_mask = 2
-mass = 0.5
-can_sleep = false
-linear_damp = 2.755
-angular_damp = 19.316
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="segment17" unique_id=509052136]
-position = Vector2(3, -76)
-shape = SubResource("CapsuleShape2D_4uue7")
-
-[node name="Sprite2D" type="Sprite2D" parent="segment17" unique_id=1554161289]
-position = Vector2(3, -76)
-scale = Vector2(0.34375, 0.29166663)
-texture = ExtResource("2_jj1r3")
-
-[node name="segment18" type="RigidBody2D" parent="." unique_id=629595512]
-position = Vector2(504, 243.00002)
+[node name="segment17" type="RigidBody2D" parent="Object" unique_id=1059806288]
+position = Vector2(-28.999939, 125.00001)
 rotation = 0.20242678
 collision_layer = 2
 collision_mask = 2
@@ -656,17 +708,17 @@ can_sleep = false
 linear_damp = 2.755
 angular_damp = 19.316
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="segment18" unique_id=875892707]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/segment17" unique_id=509052136]
 position = Vector2(3, -76)
 shape = SubResource("CapsuleShape2D_4uue7")
 
-[node name="Sprite2D" type="Sprite2D" parent="segment18" unique_id=273398585]
+[node name="Sprite2D" type="Sprite2D" parent="Object/segment17" unique_id=1554161289]
 position = Vector2(3, -76)
 scale = Vector2(0.34375, 0.29166663)
 texture = ExtResource("2_jj1r3")
 
-[node name="segment19" type="RigidBody2D" parent="." unique_id=1577685601]
-position = Vector2(502, 253.00002)
+[node name="segment18" type="RigidBody2D" parent="Object" unique_id=629595512]
+position = Vector2(-30.999939, 135.00003)
 rotation = 0.20242678
 collision_layer = 2
 collision_mask = 2
@@ -675,17 +727,17 @@ can_sleep = false
 linear_damp = 2.755
 angular_damp = 19.316
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="segment19" unique_id=154777773]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/segment18" unique_id=875892707]
 position = Vector2(3, -76)
 shape = SubResource("CapsuleShape2D_4uue7")
 
-[node name="Sprite2D" type="Sprite2D" parent="segment19" unique_id=1519526696]
+[node name="Sprite2D" type="Sprite2D" parent="Object/segment18" unique_id=273398585]
 position = Vector2(3, -76)
 scale = Vector2(0.34375, 0.29166663)
 texture = ExtResource("2_jj1r3")
 
-[node name="segment20" type="RigidBody2D" parent="." unique_id=363475075]
-position = Vector2(499.99997, 263)
+[node name="segment19" type="RigidBody2D" parent="Object" unique_id=1577685601]
+position = Vector2(-32.99994, 145.00003)
 rotation = 0.20242678
 collision_layer = 2
 collision_mask = 2
@@ -694,17 +746,17 @@ can_sleep = false
 linear_damp = 2.755
 angular_damp = 19.316
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="segment20" unique_id=514687200]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/segment19" unique_id=154777773]
 position = Vector2(3, -76)
 shape = SubResource("CapsuleShape2D_4uue7")
 
-[node name="Sprite2D" type="Sprite2D" parent="segment20" unique_id=212047598]
+[node name="Sprite2D" type="Sprite2D" parent="Object/segment19" unique_id=1519526696]
 position = Vector2(3, -76)
 scale = Vector2(0.34375, 0.29166663)
 texture = ExtResource("2_jj1r3")
 
-[node name="segment21" type="RigidBody2D" parent="." unique_id=1932398060]
-position = Vector2(497.99997, 273.00003)
+[node name="segment20" type="RigidBody2D" parent="Object" unique_id=363475075]
+position = Vector2(-34.99997, 155)
 rotation = 0.20242678
 collision_layer = 2
 collision_mask = 2
@@ -713,17 +765,17 @@ can_sleep = false
 linear_damp = 2.755
 angular_damp = 19.316
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="segment21" unique_id=154853252]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/segment20" unique_id=514687200]
 position = Vector2(3, -76)
 shape = SubResource("CapsuleShape2D_4uue7")
 
-[node name="Sprite2D" type="Sprite2D" parent="segment21" unique_id=1295334275]
+[node name="Sprite2D" type="Sprite2D" parent="Object/segment20" unique_id=212047598]
 position = Vector2(3, -76)
 scale = Vector2(0.34375, 0.29166663)
 texture = ExtResource("2_jj1r3")
 
-[node name="segment22" type="RigidBody2D" parent="." unique_id=235950214]
-position = Vector2(495, 283)
+[node name="segment21" type="RigidBody2D" parent="Object" unique_id=1932398060]
+position = Vector2(-36.99997, 165.00003)
 rotation = 0.20242678
 collision_layer = 2
 collision_mask = 2
@@ -732,17 +784,17 @@ can_sleep = false
 linear_damp = 2.755
 angular_damp = 19.316
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="segment22" unique_id=276805049]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/segment21" unique_id=154853252]
 position = Vector2(3, -76)
 shape = SubResource("CapsuleShape2D_4uue7")
 
-[node name="Sprite2D" type="Sprite2D" parent="segment22" unique_id=830524405]
+[node name="Sprite2D" type="Sprite2D" parent="Object/segment21" unique_id=1295334275]
 position = Vector2(3, -76)
 scale = Vector2(0.34375, 0.29166663)
 texture = ExtResource("2_jj1r3")
 
-[node name="segment23" type="RigidBody2D" parent="." unique_id=1187226798]
-position = Vector2(492.99997, 293.00003)
+[node name="segment22" type="RigidBody2D" parent="Object" unique_id=235950214]
+position = Vector2(-39.99994, 175)
 rotation = 0.20242678
 collision_layer = 2
 collision_mask = 2
@@ -751,17 +803,17 @@ can_sleep = false
 linear_damp = 2.755
 angular_damp = 19.316
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="segment23" unique_id=1385463216]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/segment22" unique_id=276805049]
 position = Vector2(3, -76)
 shape = SubResource("CapsuleShape2D_4uue7")
 
-[node name="Sprite2D" type="Sprite2D" parent="segment23" unique_id=1588831959]
+[node name="Sprite2D" type="Sprite2D" parent="Object/segment22" unique_id=830524405]
 position = Vector2(3, -76)
 scale = Vector2(0.34375, 0.29166663)
 texture = ExtResource("2_jj1r3")
 
-[node name="segment24" type="RigidBody2D" parent="." unique_id=1941383143]
-position = Vector2(490.99997, 303)
+[node name="segment23" type="RigidBody2D" parent="Object" unique_id=1187226798]
+position = Vector2(-41.99997, 185.00003)
 rotation = 0.20242678
 collision_layer = 2
 collision_mask = 2
@@ -770,17 +822,17 @@ can_sleep = false
 linear_damp = 2.755
 angular_damp = 19.316
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="segment24" unique_id=306948012]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/segment23" unique_id=1385463216]
 position = Vector2(3, -76)
 shape = SubResource("CapsuleShape2D_4uue7")
 
-[node name="Sprite2D" type="Sprite2D" parent="segment24" unique_id=822290332]
+[node name="Sprite2D" type="Sprite2D" parent="Object/segment23" unique_id=1588831959]
 position = Vector2(3, -76)
 scale = Vector2(0.34375, 0.29166663)
 texture = ExtResource("2_jj1r3")
 
-[node name="segment25" type="RigidBody2D" parent="." unique_id=1041931468]
-position = Vector2(489.00003, 313.00003)
+[node name="segment24" type="RigidBody2D" parent="Object" unique_id=1941383143]
+position = Vector2(-43.99997, 195)
 rotation = 0.20242678
 collision_layer = 2
 collision_mask = 2
@@ -789,17 +841,17 @@ can_sleep = false
 linear_damp = 2.755
 angular_damp = 19.316
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="segment25" unique_id=478295153]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/segment24" unique_id=306948012]
 position = Vector2(3, -76)
 shape = SubResource("CapsuleShape2D_4uue7")
 
-[node name="Sprite2D" type="Sprite2D" parent="segment25" unique_id=1219517897]
+[node name="Sprite2D" type="Sprite2D" parent="Object/segment24" unique_id=822290332]
 position = Vector2(3, -76)
 scale = Vector2(0.34375, 0.29166663)
 texture = ExtResource("2_jj1r3")
 
-[node name="segment26" type="RigidBody2D" parent="." unique_id=1548068229]
-position = Vector2(486, 323.00003)
+[node name="segment25" type="RigidBody2D" parent="Object" unique_id=1041931468]
+position = Vector2(-45.99991, 205.00003)
 rotation = 0.20242678
 collision_layer = 2
 collision_mask = 2
@@ -808,17 +860,17 @@ can_sleep = false
 linear_damp = 2.755
 angular_damp = 19.316
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="segment26" unique_id=598506580]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/segment25" unique_id=478295153]
 position = Vector2(3, -76)
 shape = SubResource("CapsuleShape2D_4uue7")
 
-[node name="Sprite2D" type="Sprite2D" parent="segment26" unique_id=1612079934]
+[node name="Sprite2D" type="Sprite2D" parent="Object/segment25" unique_id=1219517897]
 position = Vector2(3, -76)
 scale = Vector2(0.34375, 0.29166663)
 texture = ExtResource("2_jj1r3")
 
-[node name="segment27" type="RigidBody2D" parent="." unique_id=1137726976]
-position = Vector2(484.00003, 333.00003)
+[node name="segment26" type="RigidBody2D" parent="Object" unique_id=1548068229]
+position = Vector2(-48.99994, 215.00003)
 rotation = 0.20242678
 collision_layer = 2
 collision_mask = 2
@@ -827,17 +879,17 @@ can_sleep = false
 linear_damp = 2.755
 angular_damp = 19.316
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="segment27" unique_id=8691001]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/segment26" unique_id=598506580]
 position = Vector2(3, -76)
 shape = SubResource("CapsuleShape2D_4uue7")
 
-[node name="Sprite2D" type="Sprite2D" parent="segment27" unique_id=481965543]
+[node name="Sprite2D" type="Sprite2D" parent="Object/segment26" unique_id=1612079934]
 position = Vector2(3, -76)
 scale = Vector2(0.34375, 0.29166663)
 texture = ExtResource("2_jj1r3")
 
-[node name="segment28" type="RigidBody2D" parent="." unique_id=1583986252]
-position = Vector2(481.99997, 342)
+[node name="segment27" type="RigidBody2D" parent="Object" unique_id=1137726976]
+position = Vector2(-50.99991, 225.00003)
 rotation = 0.20242678
 collision_layer = 2
 collision_mask = 2
@@ -846,17 +898,17 @@ can_sleep = false
 linear_damp = 2.755
 angular_damp = 19.316
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="segment28" unique_id=537258214]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/segment27" unique_id=8691001]
 position = Vector2(3, -76)
 shape = SubResource("CapsuleShape2D_4uue7")
 
-[node name="Sprite2D" type="Sprite2D" parent="segment28" unique_id=1241081796]
+[node name="Sprite2D" type="Sprite2D" parent="Object/segment27" unique_id=481965543]
 position = Vector2(3, -76)
 scale = Vector2(0.34375, 0.29166663)
 texture = ExtResource("2_jj1r3")
 
-[node name="segment29" type="RigidBody2D" parent="." unique_id=1437845457]
-position = Vector2(479, 352.00003)
+[node name="segment28" type="RigidBody2D" parent="Object" unique_id=1583986252]
+position = Vector2(-52.99997, 234)
 rotation = 0.20242678
 collision_layer = 2
 collision_mask = 2
@@ -865,17 +917,17 @@ can_sleep = false
 linear_damp = 2.755
 angular_damp = 19.316
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="segment29" unique_id=925744327]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/segment28" unique_id=537258214]
 position = Vector2(3, -76)
 shape = SubResource("CapsuleShape2D_4uue7")
 
-[node name="Sprite2D" type="Sprite2D" parent="segment29" unique_id=1320149341]
+[node name="Sprite2D" type="Sprite2D" parent="Object/segment28" unique_id=1241081796]
 position = Vector2(3, -76)
 scale = Vector2(0.34375, 0.29166663)
 texture = ExtResource("2_jj1r3")
 
-[node name="segment30" type="RigidBody2D" parent="." unique_id=389676114]
-position = Vector2(475.99997, 362)
+[node name="segment29" type="RigidBody2D" parent="Object" unique_id=1437845457]
+position = Vector2(-55.99994, 244.00003)
 rotation = 0.20242678
 collision_layer = 2
 collision_mask = 2
@@ -884,17 +936,17 @@ can_sleep = false
 linear_damp = 2.755
 angular_damp = 19.316
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="segment30" unique_id=1429944029]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/segment29" unique_id=925744327]
 position = Vector2(3, -76)
 shape = SubResource("CapsuleShape2D_4uue7")
 
-[node name="Sprite2D" type="Sprite2D" parent="segment30" unique_id=613772974]
+[node name="Sprite2D" type="Sprite2D" parent="Object/segment29" unique_id=1320149341]
 position = Vector2(3, -76)
 scale = Vector2(0.34375, 0.29166663)
 texture = ExtResource("2_jj1r3")
 
-[node name="segment31" type="RigidBody2D" parent="." unique_id=1941545207]
-position = Vector2(473.00003, 372)
+[node name="segment30" type="RigidBody2D" parent="Object" unique_id=389676114]
+position = Vector2(-58.99997, 254)
 rotation = 0.20242678
 collision_layer = 2
 collision_mask = 2
@@ -903,17 +955,17 @@ can_sleep = false
 linear_damp = 2.755
 angular_damp = 19.316
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="segment31" unique_id=1657627921]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/segment30" unique_id=1429944029]
 position = Vector2(3, -76)
 shape = SubResource("CapsuleShape2D_4uue7")
 
-[node name="Sprite2D" type="Sprite2D" parent="segment31" unique_id=63932207]
+[node name="Sprite2D" type="Sprite2D" parent="Object/segment30" unique_id=613772974]
 position = Vector2(3, -76)
 scale = Vector2(0.34375, 0.29166663)
 texture = ExtResource("2_jj1r3")
 
-[node name="segment32" type="RigidBody2D" parent="." unique_id=1991031198]
-position = Vector2(471, 381.99997)
+[node name="segment31" type="RigidBody2D" parent="Object" unique_id=1941545207]
+position = Vector2(-61.99991, 264)
 rotation = 0.20242678
 collision_layer = 2
 collision_mask = 2
@@ -922,17 +974,17 @@ can_sleep = false
 linear_damp = 2.755
 angular_damp = 19.316
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="segment32" unique_id=1041260893]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/segment31" unique_id=1657627921]
 position = Vector2(3, -76)
 shape = SubResource("CapsuleShape2D_4uue7")
 
-[node name="Sprite2D" type="Sprite2D" parent="segment32" unique_id=744226700]
+[node name="Sprite2D" type="Sprite2D" parent="Object/segment31" unique_id=63932207]
 position = Vector2(3, -76)
 scale = Vector2(0.34375, 0.29166663)
 texture = ExtResource("2_jj1r3")
 
-[node name="segment33" type="RigidBody2D" parent="." unique_id=1735886201]
-position = Vector2(469, 391)
+[node name="segment32" type="RigidBody2D" parent="Object" unique_id=1991031198]
+position = Vector2(-63.99994, 273.99997)
 rotation = 0.20242678
 collision_layer = 2
 collision_mask = 2
@@ -941,18 +993,38 @@ can_sleep = false
 linear_damp = 2.755
 angular_damp = 19.316
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="segment33" unique_id=2118187204]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/segment32" unique_id=1041260893]
 position = Vector2(3, -76)
 shape = SubResource("CapsuleShape2D_4uue7")
 
-[node name="Sprite2D" type="Sprite2D" parent="segment33" unique_id=1712521867]
+[node name="Sprite2D" type="Sprite2D" parent="Object/segment32" unique_id=744226700]
 position = Vector2(3, -76)
 scale = Vector2(0.34375, 0.29166663)
 texture = ExtResource("2_jj1r3")
 
-[node name="segment34" type="RigidBody2D" parent="." unique_id=902481122]
-position = Vector2(539, 224.00002)
-rotation = -0.094414674
+[node name="segment33" type="RigidBody2D" parent="Object" unique_id=1735886201]
+position = Vector2(-65.99994, 283)
+rotation = 0.20242678
+collision_layer = 2
+collision_mask = 2
+mass = 0.5
+can_sleep = false
+linear_damp = 2.755
+angular_damp = 19.316
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/segment33" unique_id=2118187204]
+position = Vector2(3, -76)
+shape = SubResource("CapsuleShape2D_4uue7")
+
+[node name="Sprite2D" type="Sprite2D" parent="Object/segment33" unique_id=1712521867]
+position = Vector2(3, -76)
+scale = Vector2(0.34375, 0.29166663)
+texture = ExtResource("2_jj1r3")
+
+[node name="segment34" type="RigidBody2D" parent="Object" unique_id=902481122]
+position = Vector2(3.9999397, 116)
+rotation = -0.09441468
+scale = Vector2(0.9999998, 0.9999998)
 collision_layer = 4
 collision_mask = 4
 mass = 0.5
@@ -960,18 +1032,19 @@ can_sleep = false
 linear_damp = 2.755
 angular_damp = 19.316
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="segment34" unique_id=273209628]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/segment34" unique_id=273209628]
 position = Vector2(3, -76)
 shape = SubResource("CapsuleShape2D_4uue7")
 
-[node name="Sprite2D" type="Sprite2D" parent="segment34" unique_id=1200060313]
+[node name="Sprite2D" type="Sprite2D" parent="Object/segment34" unique_id=1200060313]
 position = Vector2(3, -76)
 scale = Vector2(0.34375, 0.29166663)
 texture = ExtResource("2_jj1r3")
 
-[node name="segment35" type="RigidBody2D" parent="." unique_id=1522801820]
-position = Vector2(541, 233.99998)
+[node name="segment35" type="RigidBody2D" parent="Object" unique_id=1522801820]
+position = Vector2(5.99994, 125.99997)
 rotation = -0.10439153
+scale = Vector2(0.9999998, 0.9999998)
 collision_layer = 4
 collision_mask = 4
 mass = 0.5
@@ -979,17 +1052,17 @@ can_sleep = false
 linear_damp = 2.755
 angular_damp = 19.316
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="segment35" unique_id=536272075]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/segment35" unique_id=536272075]
 position = Vector2(3, -76)
 shape = SubResource("CapsuleShape2D_4uue7")
 
-[node name="Sprite2D" type="Sprite2D" parent="segment35" unique_id=272448120]
+[node name="Sprite2D" type="Sprite2D" parent="Object/segment35" unique_id=272448120]
 position = Vector2(3, -76)
 scale = Vector2(0.34375, 0.29166663)
 texture = ExtResource("2_jj1r3")
 
-[node name="segment36" type="RigidBody2D" parent="." unique_id=1656930538]
-position = Vector2(542.00006, 244)
+[node name="segment36" type="RigidBody2D" parent="Object" unique_id=1656930538]
+position = Vector2(7.000061, 136)
 rotation = -0.10352489
 collision_layer = 4
 collision_mask = 4
@@ -998,18 +1071,19 @@ can_sleep = false
 linear_damp = 2.755
 angular_damp = 19.316
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="segment36" unique_id=1235433472]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/segment36" unique_id=1235433472]
 position = Vector2(3, -76)
 shape = SubResource("CapsuleShape2D_4uue7")
 
-[node name="Sprite2D" type="Sprite2D" parent="segment36" unique_id=1555583962]
+[node name="Sprite2D" type="Sprite2D" parent="Object/segment36" unique_id=1555583962]
 position = Vector2(3, -76)
 scale = Vector2(0.34375, 0.29166663)
 texture = ExtResource("2_jj1r3")
 
-[node name="segment37" type="RigidBody2D" parent="." unique_id=1460628989]
-position = Vector2(541.99994, 254)
-rotation = -0.090185985
+[node name="segment37" type="RigidBody2D" parent="Object" unique_id=1460628989]
+position = Vector2(6.999879, 145.99998)
+rotation = -0.09018599
+scale = Vector2(0.9999998, 0.9999998)
 collision_layer = 4
 collision_mask = 4
 mass = 0.5
@@ -1017,17 +1091,17 @@ can_sleep = false
 linear_damp = 2.755
 angular_damp = 19.316
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="segment37" unique_id=2142162557]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/segment37" unique_id=2142162557]
 position = Vector2(3, -76)
 shape = SubResource("CapsuleShape2D_4uue7")
 
-[node name="Sprite2D" type="Sprite2D" parent="segment37" unique_id=975106610]
+[node name="Sprite2D" type="Sprite2D" parent="Object/segment37" unique_id=975106610]
 position = Vector2(3, -76)
 scale = Vector2(0.34375, 0.29166663)
 texture = ExtResource("2_jj1r3")
 
-[node name="segment38" type="RigidBody2D" parent="." unique_id=123492043]
-position = Vector2(544, 264)
+[node name="segment38" type="RigidBody2D" parent="Object" unique_id=123492043]
+position = Vector2(9, 156)
 rotation = -0.104043424
 collision_layer = 4
 collision_mask = 4
@@ -1036,17 +1110,17 @@ can_sleep = false
 linear_damp = 2.755
 angular_damp = 19.316
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="segment38" unique_id=182979274]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/segment38" unique_id=182979274]
 position = Vector2(3, -76)
 shape = SubResource("CapsuleShape2D_4uue7")
 
-[node name="Sprite2D" type="Sprite2D" parent="segment38" unique_id=429951071]
+[node name="Sprite2D" type="Sprite2D" parent="Object/segment38" unique_id=429951071]
 position = Vector2(3, -76)
 scale = Vector2(0.34375, 0.29166663)
 texture = ExtResource("2_jj1r3")
 
-[node name="segment39" type="RigidBody2D" parent="." unique_id=1591951130]
-position = Vector2(546, 274)
+[node name="segment39" type="RigidBody2D" parent="Object" unique_id=1591951130]
+position = Vector2(11, 166)
 rotation = -0.11556637
 collision_layer = 4
 collision_mask = 4
@@ -1055,17 +1129,17 @@ can_sleep = false
 linear_damp = 2.755
 angular_damp = 19.316
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="segment39" unique_id=648165252]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/segment39" unique_id=648165252]
 position = Vector2(3, -76)
 shape = SubResource("CapsuleShape2D_4uue7")
 
-[node name="Sprite2D" type="Sprite2D" parent="segment39" unique_id=802779441]
+[node name="Sprite2D" type="Sprite2D" parent="Object/segment39" unique_id=802779441]
 position = Vector2(3, -76)
 scale = Vector2(0.34375, 0.29166663)
 texture = ExtResource("2_jj1r3")
 
-[node name="segment40" type="RigidBody2D" parent="." unique_id=826343791]
-position = Vector2(547, 284.00003)
+[node name="segment40" type="RigidBody2D" parent="Object" unique_id=826343791]
+position = Vector2(12, 176.00003)
 rotation = -0.11556637
 collision_layer = 4
 collision_mask = 4
@@ -1074,17 +1148,17 @@ can_sleep = false
 linear_damp = 2.755
 angular_damp = 19.316
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="segment40" unique_id=1165474115]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/segment40" unique_id=1165474115]
 position = Vector2(3, -76)
 shape = SubResource("CapsuleShape2D_4uue7")
 
-[node name="Sprite2D" type="Sprite2D" parent="segment40" unique_id=649040569]
+[node name="Sprite2D" type="Sprite2D" parent="Object/segment40" unique_id=649040569]
 position = Vector2(3, -76)
 scale = Vector2(0.34375, 0.29166663)
 texture = ExtResource("2_jj1r3")
 
-[node name="segment41" type="RigidBody2D" parent="." unique_id=277573815]
-position = Vector2(548, 294.00003)
+[node name="segment41" type="RigidBody2D" parent="Object" unique_id=277573815]
+position = Vector2(13, 186.00003)
 rotation = -0.11556637
 collision_layer = 4
 collision_mask = 4
@@ -1093,17 +1167,17 @@ can_sleep = false
 linear_damp = 2.755
 angular_damp = 19.316
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="segment41" unique_id=802256169]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/segment41" unique_id=802256169]
 position = Vector2(3, -76)
 shape = SubResource("CapsuleShape2D_4uue7")
 
-[node name="Sprite2D" type="Sprite2D" parent="segment41" unique_id=986108690]
+[node name="Sprite2D" type="Sprite2D" parent="Object/segment41" unique_id=986108690]
 position = Vector2(3, -76)
 scale = Vector2(0.34375, 0.29166663)
 texture = ExtResource("2_jj1r3")
 
-[node name="segment42" type="RigidBody2D" parent="." unique_id=1318036980]
-position = Vector2(549, 304)
+[node name="segment42" type="RigidBody2D" parent="Object" unique_id=1318036980]
+position = Vector2(14, 196)
 rotation = -0.11556637
 collision_layer = 4
 collision_mask = 4
@@ -1112,17 +1186,17 @@ can_sleep = false
 linear_damp = 2.755
 angular_damp = 19.316
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="segment42" unique_id=1085494715]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/segment42" unique_id=1085494715]
 position = Vector2(3, -76)
 shape = SubResource("CapsuleShape2D_4uue7")
 
-[node name="Sprite2D" type="Sprite2D" parent="segment42" unique_id=314614592]
+[node name="Sprite2D" type="Sprite2D" parent="Object/segment42" unique_id=314614592]
 position = Vector2(3, -76)
 scale = Vector2(0.34375, 0.29166663)
 texture = ExtResource("2_jj1r3")
 
-[node name="segment43" type="RigidBody2D" parent="." unique_id=1810398189]
-position = Vector2(550, 314)
+[node name="segment43" type="RigidBody2D" parent="Object" unique_id=1810398189]
+position = Vector2(15, 206)
 rotation = -0.11556637
 collision_layer = 4
 collision_mask = 4
@@ -1131,17 +1205,17 @@ can_sleep = false
 linear_damp = 2.755
 angular_damp = 19.316
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="segment43" unique_id=946917201]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/segment43" unique_id=946917201]
 position = Vector2(3, -76)
 shape = SubResource("CapsuleShape2D_4uue7")
 
-[node name="Sprite2D" type="Sprite2D" parent="segment43" unique_id=1217145202]
+[node name="Sprite2D" type="Sprite2D" parent="Object/segment43" unique_id=1217145202]
 position = Vector2(3, -76)
 scale = Vector2(0.34375, 0.29166663)
 texture = ExtResource("2_jj1r3")
 
-[node name="segment44" type="RigidBody2D" parent="." unique_id=82154626]
-position = Vector2(551, 324)
+[node name="segment44" type="RigidBody2D" parent="Object" unique_id=82154626]
+position = Vector2(16, 216)
 rotation = -0.11556637
 collision_layer = 4
 collision_mask = 4
@@ -1150,17 +1224,17 @@ can_sleep = false
 linear_damp = 2.755
 angular_damp = 19.316
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="segment44" unique_id=1888544753]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/segment44" unique_id=1888544753]
 position = Vector2(3, -76)
 shape = SubResource("CapsuleShape2D_4uue7")
 
-[node name="Sprite2D" type="Sprite2D" parent="segment44" unique_id=1974564385]
+[node name="Sprite2D" type="Sprite2D" parent="Object/segment44" unique_id=1974564385]
 position = Vector2(3, -76)
 scale = Vector2(0.34375, 0.29166663)
 texture = ExtResource("2_jj1r3")
 
-[node name="segment45" type="RigidBody2D" parent="." unique_id=21615236]
-position = Vector2(552, 334)
+[node name="segment45" type="RigidBody2D" parent="Object" unique_id=21615236]
+position = Vector2(17, 226)
 rotation = -0.11556637
 collision_layer = 4
 collision_mask = 4
@@ -1169,17 +1243,17 @@ can_sleep = false
 linear_damp = 2.755
 angular_damp = 19.316
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="segment45" unique_id=1885585713]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/segment45" unique_id=1885585713]
 position = Vector2(3, -76)
 shape = SubResource("CapsuleShape2D_4uue7")
 
-[node name="Sprite2D" type="Sprite2D" parent="segment45" unique_id=2020998679]
+[node name="Sprite2D" type="Sprite2D" parent="Object/segment45" unique_id=2020998679]
 position = Vector2(3, -76)
 scale = Vector2(0.34375, 0.29166663)
 texture = ExtResource("2_jj1r3")
 
-[node name="segment46" type="RigidBody2D" parent="." unique_id=1023214603]
-position = Vector2(553.00006, 344)
+[node name="segment46" type="RigidBody2D" parent="Object" unique_id=1023214603]
+position = Vector2(18.000061, 236)
 rotation = -0.11556637
 collision_layer = 4
 collision_mask = 4
@@ -1188,17 +1262,17 @@ can_sleep = false
 linear_damp = 2.755
 angular_damp = 19.316
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="segment46" unique_id=1293196896]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/segment46" unique_id=1293196896]
 position = Vector2(3, -76)
 shape = SubResource("CapsuleShape2D_4uue7")
 
-[node name="Sprite2D" type="Sprite2D" parent="segment46" unique_id=1682318340]
+[node name="Sprite2D" type="Sprite2D" parent="Object/segment46" unique_id=1682318340]
 position = Vector2(3, -76)
 scale = Vector2(0.34375, 0.29166663)
 texture = ExtResource("2_jj1r3")
 
-[node name="segment47" type="RigidBody2D" parent="." unique_id=236907071]
-position = Vector2(554, 353.99997)
+[node name="segment47" type="RigidBody2D" parent="Object" unique_id=236907071]
+position = Vector2(19, 245.99997)
 rotation = -0.11556637
 collision_layer = 4
 collision_mask = 4
@@ -1207,17 +1281,17 @@ can_sleep = false
 linear_damp = 2.755
 angular_damp = 19.316
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="segment47" unique_id=1422218872]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/segment47" unique_id=1422218872]
 position = Vector2(3, -76)
 shape = SubResource("CapsuleShape2D_4uue7")
 
-[node name="Sprite2D" type="Sprite2D" parent="segment47" unique_id=425261261]
+[node name="Sprite2D" type="Sprite2D" parent="Object/segment47" unique_id=425261261]
 position = Vector2(3, -76)
 scale = Vector2(0.34375, 0.29166663)
 texture = ExtResource("2_jj1r3")
 
-[node name="segment48" type="RigidBody2D" parent="." unique_id=441609322]
-position = Vector2(555, 364)
+[node name="segment48" type="RigidBody2D" parent="Object" unique_id=441609322]
+position = Vector2(20, 256)
 rotation = -0.11556637
 collision_layer = 4
 collision_mask = 4
@@ -1226,17 +1300,17 @@ can_sleep = false
 linear_damp = 2.755
 angular_damp = 19.316
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="segment48" unique_id=1291103286]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/segment48" unique_id=1291103286]
 position = Vector2(3, -76)
 shape = SubResource("CapsuleShape2D_4uue7")
 
-[node name="Sprite2D" type="Sprite2D" parent="segment48" unique_id=625510615]
+[node name="Sprite2D" type="Sprite2D" parent="Object/segment48" unique_id=625510615]
 position = Vector2(3, -76)
 scale = Vector2(0.34375, 0.29166663)
 texture = ExtResource("2_jj1r3")
 
-[node name="segment49" type="RigidBody2D" parent="." unique_id=218870712]
-position = Vector2(556.00006, 374.00003)
+[node name="segment49" type="RigidBody2D" parent="Object" unique_id=218870712]
+position = Vector2(21.000061, 266.00003)
 rotation = -0.11556637
 collision_layer = 4
 collision_mask = 4
@@ -1245,17 +1319,17 @@ can_sleep = false
 linear_damp = 2.755
 angular_damp = 19.316
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="segment49" unique_id=907173918]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/segment49" unique_id=907173918]
 position = Vector2(3, -76)
 shape = SubResource("CapsuleShape2D_4uue7")
 
-[node name="Sprite2D" type="Sprite2D" parent="segment49" unique_id=1393298539]
+[node name="Sprite2D" type="Sprite2D" parent="Object/segment49" unique_id=1393298539]
 position = Vector2(3, -76)
 scale = Vector2(0.34375, 0.29166663)
 texture = ExtResource("2_jj1r3")
 
-[node name="segment50" type="RigidBody2D" parent="." unique_id=1079945329]
-position = Vector2(557, 384)
+[node name="segment50" type="RigidBody2D" parent="Object" unique_id=1079945329]
+position = Vector2(22, 276)
 rotation = -0.11556637
 collision_layer = 4
 collision_mask = 4
@@ -1264,17 +1338,17 @@ can_sleep = false
 linear_damp = 2.755
 angular_damp = 19.316
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="segment50" unique_id=711641386]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/segment50" unique_id=711641386]
 position = Vector2(3, -76)
 shape = SubResource("CapsuleShape2D_4uue7")
 
-[node name="Sprite2D" type="Sprite2D" parent="segment50" unique_id=1878284312]
+[node name="Sprite2D" type="Sprite2D" parent="Object/segment50" unique_id=1878284312]
 position = Vector2(3, -76)
 scale = Vector2(0.34375, 0.29166663)
 texture = ExtResource("2_jj1r3")
 
-[node name="segment51" type="RigidBody2D" parent="." unique_id=399257739]
-position = Vector2(557, 394.00003)
+[node name="segment51" type="RigidBody2D" parent="Object" unique_id=399257739]
+position = Vector2(22, 286.00003)
 rotation = -0.09707469
 collision_layer = 4
 collision_mask = 4
@@ -1283,17 +1357,17 @@ can_sleep = false
 linear_damp = 2.755
 angular_damp = 19.316
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="segment51" unique_id=617079902]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/segment51" unique_id=617079902]
 position = Vector2(3, -76)
 shape = SubResource("CapsuleShape2D_4uue7")
 
-[node name="Sprite2D" type="Sprite2D" parent="segment51" unique_id=1622601454]
+[node name="Sprite2D" type="Sprite2D" parent="Object/segment51" unique_id=1622601454]
 position = Vector2(3, -76)
 scale = Vector2(0.34375, 0.29166663)
 texture = ExtResource("2_jj1r3")
 
-[node name="segment52" type="RigidBody2D" parent="." unique_id=1475967384]
-position = Vector2(559, 404)
+[node name="segment52" type="RigidBody2D" parent="Object" unique_id=1475967384]
+position = Vector2(24, 296)
 rotation = -0.10602093
 collision_layer = 4
 collision_mask = 4
@@ -1302,17 +1376,17 @@ can_sleep = false
 linear_damp = 2.755
 angular_damp = 19.316
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="segment52" unique_id=528132385]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/segment52" unique_id=528132385]
 position = Vector2(3, -76)
 shape = SubResource("CapsuleShape2D_4uue7")
 
-[node name="Sprite2D" type="Sprite2D" parent="segment52" unique_id=1176031447]
+[node name="Sprite2D" type="Sprite2D" parent="Object/segment52" unique_id=1176031447]
 position = Vector2(3, -76)
 scale = Vector2(0.34375, 0.29166663)
 texture = ExtResource("2_jj1r3")
 
-[node name="segment53" type="RigidBody2D" parent="." unique_id=710047529]
-position = Vector2(561, 413.99997)
+[node name="segment53" type="RigidBody2D" parent="Object" unique_id=710047529]
+position = Vector2(26, 305.99997)
 rotation = -0.11556637
 collision_layer = 4
 collision_mask = 4
@@ -1321,11 +1395,11 @@ can_sleep = false
 linear_damp = 2.755
 angular_damp = 19.316
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="segment53" unique_id=1687655910]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object/segment53" unique_id=1687655910]
 position = Vector2(3, -76)
 shape = SubResource("CapsuleShape2D_4uue7")
 
-[node name="Sprite2D" type="Sprite2D" parent="segment53" unique_id=432178183]
+[node name="Sprite2D" type="Sprite2D" parent="Object/segment53" unique_id=432178183]
 position = Vector2(3, -77.53415)
 scale = Vector2(0.34375, 0.22774364)
 texture = ExtResource("2_jj1r3")

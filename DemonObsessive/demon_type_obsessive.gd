@@ -1,5 +1,6 @@
 extends Control
-@onready var demon_texture: TextureRect = $Demon
+
+@onready var demon_animation: AnimatedSprite2D = $Demon
 
 var health: int
 var demon: DemonData
@@ -8,10 +9,10 @@ var is_alive: bool = true
 signal died
 
 func _ready():
+	demon_animation.play()
 	randomize()
 	random_position()
-	demon_texture.gui_input.connect(_on_demon_input)
-	
+	gui_input.connect(_on_demon_input)
 	if !is_alive:
 		died.emit()
 
@@ -33,7 +34,6 @@ func _on_demon_input(event: InputEvent):
 		if GameState.is_holding_cross():
 			random_position()
 			take_demage(10)
-		
 
 func _on_set_demon(specific_demon: DemonData):
 	demon = specific_demon
@@ -51,5 +51,7 @@ func take_demage(damage: int):
 	
 func _on_dead():
 	print("exorcismo realizado com sucesso")
+	self.queue_free()
+
 	
 	

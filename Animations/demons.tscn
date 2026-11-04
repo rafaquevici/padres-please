@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://xsgedjrt08q0"]
+
+[ext_resource type="Script" uid="uid://cw7q3e0o5yv05" path="res://Animations/demons_animation.gd" id="1_vhfae"]
+[ext_resource type="Texture2D" uid="uid://bpsya1p1ia8xg" path="res://Animations/Spritesheets/demonioolho-Sheet.png" id="2_qvl6w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_svywy"]
+atlas = ExtResource("2_qvl6w")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a73ia"]
+atlas = ExtResource("2_qvl6w")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vco23"]
+atlas = ExtResource("2_qvl6w")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qn7k5"]
+atlas = ExtResource("2_qvl6w")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y8tqf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_svywy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a73ia")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vco23")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qn7k5")
+}],
+"loop": true,
+"name": &"eye",
+"speed": 5.0
+}]
+
+[node name="Demons" type="Node2D" unique_id=967784227]
+script = ExtResource("1_vhfae")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1277204175]
+sprite_frames = SubResource("SpriteFrames_y8tqf")
+animation = &"eye"
+frame_progress = 0.20893657

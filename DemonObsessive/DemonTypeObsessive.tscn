@@ -1,18 +1,57 @@
 [gd_scene format=3 uid="uid://c2afu3esd1v4y"]
 
 [ext_resource type="Script" uid="uid://s2fvdukgeg8t" path="res://DemonObsessive/demon_type_obsessive.gd" id="1_cvqpw"]
-[ext_resource type="Texture2D" uid="uid://bucpqr5dmhebj" path="res://DemonObsessive/PlaceHolders/Captura de tela 2026-09-24 210920.png" id="2_ucnsv"]
+[ext_resource type="Texture2D" uid="uid://bpsya1p1ia8xg" path="res://Animations/Spritesheets/demonioolho-Sheet.png" id="2_0jpsb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_svywy"]
+atlas = ExtResource("2_0jpsb")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a73ia"]
+atlas = ExtResource("2_0jpsb")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vco23"]
+atlas = ExtResource("2_0jpsb")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qn7k5"]
+atlas = ExtResource("2_0jpsb")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nm3vm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_svywy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a73ia")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vco23")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qn7k5")
+}],
+"loop": true,
+"name": &"eye",
+"speed": 5.0
+}]
 
 [node name="DemonTypeObsessive" type="Control" unique_id=1753057095]
+z_index = 8
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 3
 anchors_preset = 0
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 98.0
+offset_bottom = 98.0
 script = ExtResource("1_cvqpw")
 
-[node name="Demon" type="TextureRect" parent="." unique_id=1073352275]
-layout_mode = 0
-offset_left = 196.0
-offset_top = 134.0
-offset_right = 484.0
-offset_bottom = 411.0
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("2_ucnsv")
+[node name="Demon" type="AnimatedSprite2D" parent="." unique_id=1807736330]
+position = Vector2(52, 52)
+sprite_frames = SubResource("SpriteFrames_nm3vm")
+animation = &"eye"
+frame_progress = 0.90791047
