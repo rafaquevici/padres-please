@@ -1,6 +1,7 @@
 extends Control
 
 @onready var demon_animation: AnimatedSprite2D = $Demon
+@onready var dano: AudioStreamPlayer = $Dano
 
 var health: int
 var demon: DemonData
@@ -43,6 +44,7 @@ func _on_set_health(demon: DemonData):
 	
 func take_demage(damage: int):
 	health = max(health - damage, 0)
+	dano.play()
 	if health <= 0 and is_alive:
 		is_alive = false
 		died.emit()
@@ -50,7 +52,6 @@ func take_demage(damage: int):
 	print(health)
 	
 func _on_dead():
-	print("exorcismo realizado com sucesso")
 	self.queue_free()
 
 	

@@ -21,6 +21,7 @@ func setup(data: ItemData) -> void:
 	
 func buy_item():
 	var item_slot := get_item()
+
 	if item_slot == null or item_slot.resource == null:
 		return
 
@@ -31,7 +32,11 @@ func buy_item():
 		return
 
 	GameState.current_money -= data.price
+
+	GameState.items_buyied.append(data)
+
 	store._update_money()
+
 	item_slot.queue_free()
 	_close_popup()
 

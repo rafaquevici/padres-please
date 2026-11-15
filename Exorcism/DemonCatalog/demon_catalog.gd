@@ -42,7 +42,7 @@ func _ready():
 	skill_1.text_changed.connect(_skill1_changed)
 	skill_2.text_changed.connect(_skill2_changed)
 	skill_3.text_changed.connect(_skill3_changed)
-
+	
 
 	_change_page(0)
 

@@ -174,3 +174,11 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxTexture_eimfe")
 script = ExtResource("4_4t50x")
+
+[node name="Button" type="Button" parent="." unique_id=625292835]
+layout_mode = 0
+offset_left = 953.0
+offset_top = 549.0
+offset_right = 1107.0
+offset_bottom = 607.0
+text = "Exorcismo"

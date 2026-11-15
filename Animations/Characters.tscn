@@ -77,7 +77,8 @@ animations = [{
 script = ExtResource("1_xpmkf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1680733301]
-position = Vector2(578.99994, 312)
+z_index = -5
+position = Vector2(576, 368)
 scale = Vector2(0.8466667, 0.773125)
 sprite_frames = SubResource("SpriteFrames_bplb8")
 animation = &"genova"

@@ -6,10 +6,14 @@ extends Control
 @onready var demon_catalog: Control = $DemonCatalog
 var incensary_instance: Node2D
 @onready var cursor: TextureRect = $Cursor
-@onready var item_cross: Button = $Scenario/ItemContainer1/ItemCross
-@onready var incensary: Button = $Scenario/ItemContainer2/Incensary
-@onready var demon_type_obsessive: Control = $Demons/DemonTypeObsessive
+@onready var item_cross: Button = $Scenario/ItemCross
+@onready var incensary: Button = $Scenario/Incensary
+@onready var demon_type_obsessive: Control = $DemonTypeObsessive
 @onready var scenario: Control = $Scenario
+@onready var cronometro: Node = $Cronometro
+@onready var ir_loja: Button = $ir_loja
+
+
 
 @export var possessive_demons: Array[DemonData]
 @export var obsessive_demons: Array[DemonData]
@@ -18,6 +22,8 @@ var incensary_instance: Node2D
 @export var holding_cross_hand: Texture2D
 @export var item_cross_texture: Texture2D
 @export var incensary_texture: Texture2D
+
+var money_acquired: float
 
 var current_demon_type: DemonData.DemonType 
 var current_demon: DemonData
@@ -30,14 +36,18 @@ func _ready():
 	_get_character("genova", true)
 	#_get_character(GameState.current_npc.animation, true) quando tiver 
 	#is_possessed = GameState.current_npc.possessed
+	GameState.exorcism_time = 0.0
+	cronometro.counting = true
 	randomize()
 	_randomize_demon()
 	_start_demon()
 	_define_cursor()
+	demon_type_obsessive.died.connect(end_exorcism)
 	catalog_button.pressed.connect(_open_catalog)
 	demon_catalog.not_visible.connect(_on_catalog_visibility_changed)
 	item_cross.pressed.connect(_on_item_cross_pressed)
 	incensary.pressed.connect(_on_item_incencary_pressed)
+	ir_loja.pressed.connect(open_store)
 
 func _define_cursor():
 	if cursor.texture == closed_hand:
@@ -125,3 +135,11 @@ func _start_demon():
 	
 func is_holding_cross():
 	return GameState.item_in_hand == item_cross
+	
+func end_exorcism():
+	cronometro.counting = false
+	money_acquired = 10 - (GameState.exorcism_time * 0.001)
+	GameState.current_money += money_acquired
+
+func open_store():
+	get_tree().change_scene_to_file("res://Store/Store.tscn")
