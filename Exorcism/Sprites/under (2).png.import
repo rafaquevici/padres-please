@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://470o831ey257"
-path="res://.godot/imported/under.png-1f921cd2423f4d843e67bfeda6e11421.ctex"
+path="res://.godot/imported/under (2).png-899c2aa39a797b314c82279f2c610df2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Exorcism/under.png"
-dest_files=["res://.godot/imported/under.png-1f921cd2423f4d843e67bfeda6e11421.ctex"]
+source_file="res://Exorcism/Sprites/under (2).png"
+dest_files=["res://.godot/imported/under (2).png-899c2aa39a797b314c82279f2c610df2.ctex"]
 
 [params]
 

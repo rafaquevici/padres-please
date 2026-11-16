@@ -7,4 +7,3 @@ func _process(delta: float) -> void:
 	if counting:
 		time += delta
 		GameState.exorcism_time += delta
-		

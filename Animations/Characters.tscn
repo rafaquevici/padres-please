@@ -74,10 +74,11 @@ animations = [{
 }]
 
 [node name="Characters" type="Node2D" unique_id=345148996]
+z_index = -10
 script = ExtResource("1_xpmkf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1680733301]
-z_index = -5
+z_index = -10
 position = Vector2(576, 368)
 scale = Vector2(0.8466667, 0.773125)
 sprite_frames = SubResource("SpriteFrames_bplb8")
