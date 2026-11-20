@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DialogueBlock" format=3 uid="uid://brfrok4hw4j3d"]
+
+[ext_resource type="Script" uid="uid://dcl2035rt3xix" path="res://Data/DialogueBlock.gd" id="1_fvs5d"]
+
+[resource]
+script = ExtResource("1_fvs5d")
+dialogues = Array[String](["O homem sorriu. Pela primeira vez em meses, não havia medo em seus olhos.", "O fiel agradeceu. Sua sombra acompanhou seus passos até a porta.", "O perdão foi concedido. E, dessa vez, ninguém respondeu das profundezas.", "O homem se levantou aliviado. O peso que carregava parecia finalmente ter desaparecido.", "O senhor fez a escolha certa, padre. Nem toda alma que sofre está perdida.", "Deus ouviu sua oração. O silêncio que se seguiu era reconfortante.", "O fiel abaixou a cabeça. Por um instante, a capela pareceu um lugar menos triste.", "O homem começou a chorar. Eram lágrimas de alívio, nada mais.", "Obrigado, padre. Eu já estava começando a acreditar que não havia mais salvação para mim.", "O pecado foi perdoado. O homem partiu levando consigo apenas a própria consciência.", "Por um instante, os santos nas paredes pareceram observar o fiel com serenidade.", "O homem se levantou e respirou fundo. Não havia outra voz, nem outro sorriso.", "O senhor acaba de devolver a esperança a um homem, padre. Às vezes, isso é suficiente.", "Amém, disse o fiel. E sua voz foi apenas sua.", "O padre fez o sinal da cruz. Dessa vez, não sentiu medo algum."])
+metadata/_custom_type_script = "uid://dcl2035rt3xix"

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="LetterSound" format=3 uid="uid://d2wedde0p5uyq"]
+
+[ext_resource type="AudioStream" uid="uid://di71x1p6l1jpf" path="res://Confessional/Sounds/voz1.mp3" id="1_3dm45"]
+[ext_resource type="Script" uid="uid://coc4jw3hxmqyv" path="res://Data/SoundData/SoundData.gd" id="1_dvs3a"]
+[ext_resource type="AudioStream" uid="uid://cr7t0un0s00pn" path="res://Confessional/Sounds/voz2.mp3" id="2_pmqgf"]
+[ext_resource type="AudioStream" uid="uid://osdthashsjer" path="res://Confessional/Sounds/voz3.mp3" id="3_dwkfc"]
+[ext_resource type="AudioStream" uid="uid://b0vgd1nscbjc4" path="res://Confessional/Sounds/voz4.mp3" id="4_7hl4h"]
+[ext_resource type="AudioStream" uid="uid://qunyqj4th0sh" path="res://Confessional/Sounds/voz5.mp3" id="5_bbhxw"]
+[ext_resource type="AudioStream" uid="uid://dckftqhwxo5ef" path="res://Confessional/Sounds/voz6.mp3" id="6_veokv"]
+
+[resource]
+script = ExtResource("1_dvs3a")
+letter_sound_array = Array[AudioStream]([ExtResource("1_3dm45"), ExtResource("2_pmqgf"), ExtResource("3_dwkfc"), ExtResource("4_7hl4h"), ExtResource("5_bbhxw"), ExtResource("6_veokv")])
+metadata/_custom_type_script = "uid://coc4jw3hxmqyv"

@@ -12,10 +12,14 @@
 [ext_resource type="Resource" uid="uid://lbnoto7dwo0k" path="res://Data/PossessedDialogues/possessedDialogue04.tres" id="10_surdf"]
 [ext_resource type="Resource" uid="uid://be5le3atjmoix" path="res://Data/PossessedDialogues/possessedDialogue05.tres" id="11_j3j51"]
 [ext_resource type="Script" uid="uid://dko2hinfpa6le" path="res://Data/NpcDatabase.gd" id="12_57pnm"]
+[ext_resource type="Texture2D" uid="uid://bbwwbd5x7dj71" path="res://Data/Sprites/alex sheet.jpg" id="13_utwwi"]
+[ext_resource type="Texture2D" uid="uid://ss33lkkn0wnf" path="res://Data/Sprites/Amarelo separado sheet.jpg" id="14_n6snt"]
+[ext_resource type="Texture2D" uid="uid://jm81w80r4y8r" path="res://Data/Sprites/geno sheet.jpg" id="15_ttexm"]
 
 [resource]
 script = ExtResource("12_57pnm")
 name = Array[String](["João", "Maria", "Carlos", "Ana", "Pedro", "Lucas", "Mariana", "Rafael", "Beatriz", "Antônio"])
 normalDialogue = Array[ExtResource("1_v5xgs")]([ExtResource("2_wc7y0"), ExtResource("3_686ct"), ExtResource("4_utwwi"), ExtResource("5_n6snt"), ExtResource("6_ttexm")])
 possessedDialogue = Array[ExtResource("1_v5xgs")]([ExtResource("7_1v64c"), ExtResource("8_ags41"), ExtResource("9_6sacc"), ExtResource("10_surdf"), ExtResource("11_j3j51")])
+sprites = Array[Texture2D]([ExtResource("13_utwwi"), ExtResource("14_n6snt"), ExtResource("15_ttexm")])
 metadata/_custom_type_script = "uid://dko2hinfpa6le"

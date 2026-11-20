@@ -1,0 +1,346 @@
+[gd_scene format=3 uid="uid://buvugoekbabp5"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iyevl"]
+modulate_color = Color(1.6319928, 1.6218463, 1.6568162, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hf8ey"]
+content_margin_left = 1879.0
+content_margin_top = 213.0
+content_margin_bottom = 336.0
+
+[sub_resource type="Gradient" id="Gradient_jrnjl"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_01hwc"]
+gradient = SubResource("Gradient_jrnjl")
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_eoq0q"]
+color = Color(1, 1, 1, 1)
+grow_begin = -3.0
+grow_end = -8.0
+thickness = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_01hwc"]
+bg_color = Color(0.9098039, 0, 0.101960786, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eoq0q"]
+bg_color = Color(0.9254902, 0, 0.20392157, 1)
+
+[sub_resource type="AudioStream" id="AudioStream_hf8ey"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1klhj"]
+region = Rect2(0, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u145q"]
+region = Rect2(640, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_alsst"]
+region = Rect2(1280, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0bx73"]
+region = Rect2(1920, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_md48n"]
+region = Rect2(2560, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lev6q"]
+region = Rect2(3200, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0txv"]
+region = Rect2(3840, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_edf0h"]
+region = Rect2(4480, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i7wyy"]
+region = Rect2(5120, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tvxi7"]
+region = Rect2(5760, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u3uhe"]
+region = Rect2(6400, 0, 640, 360)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w6878"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1klhj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u145q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_alsst")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0bx73")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_md48n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lev6q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j0txv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_edf0h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i7wyy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tvxi7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u3uhe")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="MenuInicial" type="Control" unique_id=763819313]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Wallpaper" type="Panel" parent="." unique_id=1001193274]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_iyevl")
+
+[node name="BotoesPrincipais" type="VBoxContainer" parent="." unique_id=443472003]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 108.0
+offset_top = -107.0
+offset_right = 173.0
+offset_bottom = -41.0
+grow_vertical = 2
+scale = Vector2(4.5, 4.5)
+theme_override_constants/separation = -11
+
+[node name="IniciarJogo" type="TextureButton" parent="BotoesPrincipais" unique_id=1110514067]
+layout_mode = 2
+size_flags_vertical = 3
+tooltip_text = "
+"
+
+[node name="IniciarJogo" type="Label" parent="BotoesPrincipais/IniciarJogo" unique_id=538353822]
+layout_mode = 0
+offset_left = 9.555556
+offset_top = 11.555555
+offset_right = 193.55556
+offset_bottom = 46.555557
+scale = Vector2(0.25, 0.25)
+theme_override_colors/font_color = Color(0.9098039, 0, 0.101960786, 1)
+theme_override_font_sizes/font_size = 32
+text = "INICIAR JOGO"
+
+[node name="Opcoes" type="TextureButton" parent="BotoesPrincipais" unique_id=1088929454]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Opcoes" type="Label" parent="BotoesPrincipais/Opcoes" unique_id=1801949351]
+layout_mode = 0
+offset_left = 16.666666
+offset_top = 11.888888
+offset_right = 142.66666
+offset_bottom = 56.88889
+scale = Vector2(0.25, 0.25)
+theme_override_colors/font_color = Color(0.9098039, 0, 0.101960786, 1)
+theme_override_font_sizes/font_size = 32
+text = "OPÇÕES"
+
+[node name="Sair" type="TextureButton" parent="BotoesPrincipais" unique_id=78467003]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Sair" type="Label" parent="BotoesPrincipais/Sair" unique_id=1506425061]
+layout_mode = 0
+offset_left = 23.555555
+offset_top = 11.555555
+offset_right = 92.55556
+offset_bottom = 56.555557
+scale = Vector2(0.25, 0.25)
+theme_override_colors/font_color = Color(0.9098039, 0, 0.101960786, 1)
+theme_override_font_sizes/font_size = 32
+text = "SAIR"
+
+[node name="Opcoes" type="Panel" parent="." unique_id=532869380]
+unique_name_in_owner = true
+process_mode = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+
+[node name="Tumulo" type="Label" parent="Opcoes" unique_id=768697678]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -498.0
+offset_top = -210.0
+offset_right = 1487.0
+offset_bottom = 366.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.75)
+theme_override_colors/font_color = Color(0.8784314, 0.9254902, 0, 1)
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxTexture_hf8ey")
+horizontal_alignment = 1
+
+[node name="Voltar" type="TextureButton" parent="Opcoes" unique_id=1347289705]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -101.0
+offset_top = 1.0
+offset_right = -36.0
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.1, 2.4)
+size_flags_vertical = 3
+
+[node name="VoltarTexto" type="Label" parent="Opcoes" unique_id=188180345]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -47.0
+offset_top = 27.333336
+offset_right = 47.0
+offset_bottom = 54.333336
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9098039, 0, 0.101960786, 1)
+theme_override_font_sizes/font_size = 25
+text = "VOLTAR"
+
+[node name="BotaoTelaCheia" type="TextureRect" parent="Opcoes" unique_id=2069180803]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -101.0
+offset_top = -49.0
+offset_right = -36.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.1, 2.4)
+
+[node name="CheckButton" type="CheckButton" parent="Opcoes" unique_id=830723702]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -82.0
+offset_top = -41.0
+offset_right = 85.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9098039, 0, 0.101960786, 1)
+theme_override_colors/font_focus_color = Color(0.9098039, 0, 0.101960786, 1)
+theme_override_colors/font_pressed_color = Color(0.9098039, 0, 0.101960786, 1)
+theme_override_colors/font_hover_color = Color(0.9098039, 0, 0.101960786, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.9098039, 0, 0.101960786, 1)
+theme_override_font_sizes/font_size = 20
+text = "TELA CHEIA"
+
+[node name="BotaoVolume" type="TextureRect" parent="Opcoes" unique_id=202166156]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.99997
+offset_top = -100.000015
+offset_right = -36.0
+offset_bottom = -70.000015
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.1, 2.4)
+
+[node name="AudioControl" type="HSlider" parent="Opcoes" unique_id=236519879]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -54.666668
+offset_top = -70.0
+offset_right = 77.33333
+offset_bottom = -54.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_icons/grabber_disabled = SubResource("GradientTexture2D_01hwc")
+theme_override_styles/slider = SubResource("StyleBoxLine_eoq0q")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_01hwc")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_eoq0q")
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="IconeSom" type="TextureRect" parent="Opcoes/AudioControl" unique_id=1252269931]
+layout_mode = 0
+offset_left = -24.000002
+offset_top = -2.0
+offset_right = 15.999998
+offset_bottom = 38.0
+scale = Vector2(0.5, 0.5)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Opcoes/AudioControl" unique_id=438485687]
+stream = SubResource("AudioStream_hf8ey")
+autoplay = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Opcoes" unique_id=537366840]
+texture_filter = 1
+position = Vector2(-14, 6.000003)
+scale = Vector2(1.2, 1.2)
+sprite_frames = SubResource("SpriteFrames_w6878")
+autoplay = "default"
+frame_progress = 0.71683246
+
+[connection signal="pressed" from="BotoesPrincipais/IniciarJogo" to="." method="_on_InciarJogo_pressed"]
+[connection signal="pressed" from="BotoesPrincipais/Opcoes" to="." method="_on_Opcoes_pressed"]
+[connection signal="pressed" from="BotoesPrincipais/Sair" to="." method="_on_Saida_pressed"]
+[connection signal="pressed" from="Opcoes/Voltar" to="." method="_on_voltar_pressed"]
+[connection signal="toggled" from="Opcoes/CheckButton" to="Opcoes/CheckButton" method="_on_toggled"]
+[connection signal="value_changed" from="Opcoes/AudioControl" to="Opcoes/AudioControl" method="_on_value_changed"]
