@@ -1,6 +1,7 @@
 extends Node
 
-@onready var moving_scenario: Control = $"../UI/Moving_scenario"
+@onready var moving_scenario: Control = $"../../UI/Moving_scenario"
+
 
 
 var animation_scene = preload("res://Animations/Characters.tscn")

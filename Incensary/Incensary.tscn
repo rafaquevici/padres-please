@@ -61,7 +61,7 @@ z_index = 10
 script = ExtResource("1_5672m")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1666564859]
-z_index = -4
+z_index = -20
 z_as_relative = false
 position = Vector2(-4, 290)
 amount = 3000
@@ -73,6 +73,7 @@ draw_order = 2
 process_material = SubResource("ParticleProcessMaterial_e4eud")
 
 [node name="Object" type="Node2D" parent="." unique_id=1565653659]
+z_index = 10
 
 [node name="incensary" type="RigidBody2D" parent="Object" unique_id=1360350081]
 position = Vector2(-583, -82)

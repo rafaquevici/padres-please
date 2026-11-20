@@ -6,8 +6,9 @@
 
 [resource]
 script = ExtResource("1_f5it2")
-name = "Selo"
+name = "Selo Demônio Obsessivo"
 texture = ExtResource("3_o6mxl")
 holding_texture = ExtResource("1_hsrdx")
 price = 20
+description = "Exorcisa instantaneamente um demônio do tipo obsessivo. "
 metadata/_custom_type_script = "uid://c5ioevbr2k8fv"

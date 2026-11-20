@@ -8,6 +8,7 @@ extends Control
 
 
 func _ready():
+	items = GameState.items
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	_update_money()
 

@@ -2,17 +2,30 @@
 
 [ext_resource type="Script" uid="uid://bc6pbit51to8b" path="res://Exorcism/DemonCatalog/demon_catalog.gd" id="1_f3jcb"]
 [ext_resource type="Texture2D" uid="uid://nwnqk6l3jse8" path="res://Exorcism/DemonCatalog/PlaceHolders/Captura de tela 2026-09-14 194129.png" id="1_p5kfm"]
-[ext_resource type="Resource" uid="uid://dqoqrlhswcepp" path="res://Exorcism/Demons/ryuk.tres" id="2_bpcw6"]
-[ext_resource type="Resource" uid="uid://dlsk3450ss0yr" path="res://Exorcism/Demons/muzan.tres" id="3_c80ex"]
-[ext_resource type="Resource" uid="uid://0fp855wywyfx" path="res://Exorcism/Demons/eye.tres" id="4_c80ex"]
+[ext_resource type="Script" uid="uid://c6rso3vgbaaj8" path="res://Exorcism/Scripts/demon_resource.gd" id="2_bpcw6"]
+[ext_resource type="Texture2D" uid="uid://bpt8ci1mm0buo" path="res://Exorcism/Sprites/Captura de tela 2026-11-20 184402.png" id="2_c80ex"]
+[ext_resource type="Texture2D" uid="uid://dbuik64tv7tx" path="res://Exorcism/Sprites/livro fechado.png" id="3_c80ex"]
+
+[sub_resource type="Resource" id="Resource_v3bgh"]
+script = ExtResource("2_bpcw6")
+demon_name = "Olho"
+demon_catalog_icon = ExtResource("2_c80ex")
+skill1 = "Fica te perseguindo"
+skill3 = "Você nunca sabe onde ele está"
+health = 100
+metadata/_custom_type_script = "uid://c6rso3vgbaaj8"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c80ex"]
+bg_color = Color(0.004019165, 0.004019165, 0.004019165, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v3bgh"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="DemonCatalog" type="Control" unique_id=36881817]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_f3jcb")
-ryuk = ExtResource("2_bpcw6")
-muzan = ExtResource("3_c80ex")
-eye = ExtResource("4_c80ex")
+ObsessiveDemon = SubResource("Resource_v3bgh")
 
 [node name="Page" type="Panel" parent="." unique_id=2058769857]
 layout_mode = 0
@@ -20,6 +33,7 @@ offset_left = 277.0
 offset_top = 53.0
 offset_right = 937.0
 offset_bottom = 593.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_c80ex")
 metadata/_edit_use_anchors_ = true
 
 [node name="CloseButton" type="Button" parent="Page" unique_id=401231425]
@@ -70,6 +84,7 @@ offset_left = 328.0
 offset_top = 124.0
 offset_right = 606.0
 offset_bottom = 429.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v3bgh")
 
 [node name="skill1" type="LineEdit" parent="Page/Description" unique_id=1041223369]
 layout_mode = 0
@@ -109,3 +124,13 @@ Ele ataca
 
 Seu ponto fraco é
 "
+
+[node name="Capa" type="TextureRect" parent="." unique_id=1556180800]
+visible = false
+layout_mode = 0
+offset_left = 293.0
+offset_top = -241.0
+offset_right = 752.0
+offset_bottom = 575.0
+scale = Vector2(1.406338, 1.2824978)
+texture = ExtResource("3_c80ex")

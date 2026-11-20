@@ -10,4 +10,5 @@ name = "Pistola"
 texture = ExtResource("3_bal0u")
 holding_texture = ExtResource("1_0atdo")
 price = 20
+description = "Você pode matar o demônio. Mas tamém pode matar a vitma. Tome cuidado. Uso único"
 metadata/_custom_type_script = "uid://c5ioevbr2k8fv"

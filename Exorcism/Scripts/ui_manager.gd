@@ -1,10 +1,10 @@
 extends Node
 
-@onready var cursor: TextureRect = $"../UI/Cursor/Cursor"
-@onready var item_cross: Button = $Moving_scenario/Z2/Fixed_items/ItemCross
+@onready var cursor: TextureRect = $Cursor/Cursor
+@onready var item_cross: Button = $Moving_scenario/Fixed_items/ItemCross
 @export var closed_hand: Texture2D
-@onready var demon_catalog: Control = $DemonCatalog
-@onready var catalog_button: Button = $Moving_scenario/Z2/Buttons/CatalogButton
+@onready var demon_catalog: Control = $Moving_scenario/Catalog/DemonCatalog
+@onready var catalog_button: Button = $Moving_scenario/Buttons/CatalogButton
 @onready var exorcism: Exorcism = $".."
 
 
@@ -27,4 +27,5 @@ func _on_catalog_visibility_changed():
 	
 func open_store():
 	get_tree().change_scene_to_file("res://Store/Store.tscn")
+	
 	

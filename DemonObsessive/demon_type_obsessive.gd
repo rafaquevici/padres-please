@@ -35,6 +35,10 @@ func _on_demon_input(event: InputEvent):
 		if GameState.is_holding_cross():
 			random_position()
 			take_demage(10)
+		if GameState.is_holding_pistol():
+			take_demage(100000)
+		if GameState.is_holding_stamp():
+			take_demage(100000)
 
 func _on_set_demon(specific_demon: DemonData):
 	demon = specific_demon

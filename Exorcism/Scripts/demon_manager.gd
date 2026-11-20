@@ -1,8 +1,7 @@
 extends Node
 
-
-@onready var demon_type_obsessive: Control = $DemonTypeObsessive
-@onready var scenario: Control = $"../UI/Moving_scenario/Scenario"
+@onready var demon_type_obsessive: Control = $"../../UI/Smoke_Container/Demons/DemonTypeObsessive"
+@onready var scenario: Control = $"../../UI/Moving_scenario/Scenario"
 
 @export var possessive_demons: Array[DemonData]
 @export var obsessive_demons: Array[DemonData]

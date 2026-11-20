@@ -15,4 +15,6 @@ func set_text(newRes: Resource):
 	resource = newRes
 	$Panel/RichTextLabel.clear()
 	$Panel/RichTextLabel.append_text(resource.name + "\n")
+	$Panel/RichTextLabel.append_text("\n")
+	$Panel/RichTextLabel.append_text(resource.description + "\n")
 		

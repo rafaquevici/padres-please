@@ -41,7 +41,7 @@ animations = [{
 }]
 
 [node name="DemonTypeObsessive" type="Control" unique_id=1753057095]
-z_index = 3
+z_index = 10
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 3
 anchors_preset = 0
@@ -52,6 +52,7 @@ offset_bottom = 98.0
 script = ExtResource("1_cvqpw")
 
 [node name="Demon" type="AnimatedSprite2D" parent="." unique_id=1807736330]
+z_index = 10
 position = Vector2(52, 52)
 sprite_frames = SubResource("SpriteFrames_nm3vm")
 animation = &"eye"
