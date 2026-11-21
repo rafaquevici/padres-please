@@ -277,6 +277,10 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cphfl"]
+radius = 119.0
+height = 954.0
+
 [node name="Characters" type="Node2D" unique_id=345148996]
 z_index = -1
 script = ExtResource("1_xpmkf")
@@ -287,3 +291,9 @@ position = Vector2(581, 362)
 scale = Vector2(0.7344444, 0.6553125)
 sprite_frames = SubResource("SpriteFrames_bplb8")
 animation = &"sexy"
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1508473162]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1938447211]
+position = Vector2(556, 370)
+shape = SubResource("CapsuleShape2D_cphfl")

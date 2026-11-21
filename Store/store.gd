@@ -30,11 +30,11 @@ func _on_slot_gui_input(event: InputEvent, slot: Slot):
 		slot.buy_item()
 		
 func _update_money():
-	money.text = str(GameState.current_money) + ",00✞"
+	var current_money = int(GameState.current_money)
+	money.text = str(current_money) + ",00✞"
 
 func init_day():
 	get_tree().paused = true
-
 
 	var tween = create_tween()
 	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)

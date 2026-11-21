@@ -111,8 +111,6 @@ func _on_exorcism_pressed() -> void:
 
 	get_tree().change_scene_to_file("res://Exorcism/Exorcism.tscn")
 
-
-
 func update_timer_display() -> void:
 	var seconds = int(ceil(GameState.time_remaining))
 

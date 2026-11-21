@@ -32,13 +32,12 @@ expand_mode = 1
 
 [node name="Label" type="Label" parent="." unique_id=564274382]
 layout_mode = 0
-offset_left = 391.0
-offset_top = 282.0
-offset_right = 733.0
-offset_bottom = 371.0
+offset_left = 286.0
+offset_top = 276.0
+offset_right = 886.0
+offset_bottom = 365.0
 theme_override_fonts/font = ExtResource("4_xcsxq")
 theme_override_font_sizes/font_size = 40
-text = "O MAU VENCEU"
 horizontal_alignment = 1
 vertical_alignment = 1
 

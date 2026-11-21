@@ -1,6 +1,8 @@
 class_name DemonData
 extends Resource
 
+signal health_changed(new_health: int)
+
 enum DemonType {
 	OBSESSIVE,
 	POSSESSIVE,
@@ -13,3 +15,10 @@ enum DemonType {
 @export var skill2: String
 @export var skill3: String
 @export var health: int 
+
+func take_damage(damage: int) -> void:
+	health = max(health - damage, 0)
+	health_changed.emit(health)
+	
+func kill() -> void:
+	take_damage(health)

@@ -57,22 +57,33 @@ func _process(delta: float):
 		scenario.position.y += velocidade * delta
 		smoke_container.offset.y += velocidade * delta
 		
+
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton \
-			and event.button_index == MOUSE_BUTTON_LEFT \
-			and event.pressed:
-		var hovered := get_viewport().gui_get_hovered_control()
-		if hovered is Button and (hovered.get_parent() == consumables or hovered == item_cross or hovered == incensary):
-			return
-		if GameState.is_holding_pistol():
-			consumables.free_item("Pistol")
-			GameState.items.erase(GameState.pistola)
-		if GameState.is_holding_stamp():
-			consumables.free_item("Demon_Obssessive_Stamp")
+	if not (event is InputEventMouseButton \
+	and event.button_index == MOUSE_BUTTON_LEFT \
+	and event.pressed):
+		return
+
+	var hovered = get_viewport().gui_get_hovered_control()
+
+	if hovered is Button and (
+		hovered.get_parent() == consumables
+		or hovered == item_cross
+		or hovered == incensary
+	):
+		return
+
+	elif GameState.is_holding_stamp():
+		if GameState.current_demon != null \
+		and GameState.current_demon.demon_type == DemonData.DemonType.OBSESSIVE:
+			consumables.free_item("Stamp")
+			GameState.current_demon.kill()
+							
 
 func end_exorcism():
 	cronometro.counting = false
-	money_acquired = snappedf(10.0 - (GameState.exorcism_time * 0.001), 0.5)
+	money_acquired = snappedf(10.0 - (GameState.exorcism_time * 0.001), 1)
+	money_acquired = int(money_acquired)
 	GameState.current_money += money_acquired
 	print(GameState.current_money)
 	sound_manager.play_music(false)
@@ -80,3 +91,8 @@ func end_exorcism():
 
 func open_confessional():
 	get_tree().change_scene_to_file("res://Confessional/confessional.tscn")
+	
+func used_pistol():
+		if GameState.is_holding_pistol():
+			consumables.free_item("Pistol")
+			GameState.items.remove_at(0)

@@ -6,3 +6,9 @@ extends Resource
 @export var holding_texture: Texture
 @export var price: int
 @export var description: String
+@export var type: Type
+
+enum Type {
+	STAMP,
+	PISTOL
+}

@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://bs2b8fk05frh7" path="res://Exorcism/DemonCatalog/DemonCatalog.tscn" id="1_g5omu"]
 [ext_resource type="Script" uid="uid://c6rso3vgbaaj8" path="res://Exorcism/Scripts/demon_resource.gd" id="2_00r1e"]
 [ext_resource type="Texture2D" uid="uid://gmv82u7e7lkb" path="res://Exorcism/DemonCatalog/PlaceHolders/image.png" id="5_3tqnv"]
-[ext_resource type="Texture2D" uid="uid://hplao5t1sy03" path="res://Exorcism/Sprites/maozinha aberta.png" id="5_8ncxl"]
 [ext_resource type="Texture2D" uid="uid://dgt2lci3sin6" path="res://Animations/Spritesheets/caixa texto foda padre-Sheet (1).png" id="7_tyltd"]
 [ext_resource type="Texture2D" uid="uid://d27gadepcwa8f" path="res://Exorcism/Sprites/mãozinha.png" id="8_ik8ot"]
 [ext_resource type="PackedScene" uid="uid://c2afu3esd1v4y" path="res://DemonObsessive/DemonTypeObsessive.tscn" id="8_l5tor"]
@@ -25,11 +24,7 @@
 [ext_resource type="Script" uid="uid://cd06q2nvpqyu8" path="res://Exorcism/Scripts/character_manager.gd" id="16_tyltd"]
 [ext_resource type="Script" uid="uid://c6af2sngdgq08" path="res://Exorcism/Scripts/ui_manager.gd" id="17_26huy"]
 [ext_resource type="Script" uid="uid://c6ca47f8qa0wq" path="res://Exorcism/Scripts/consumables.gd" id="19_e8o6h"]
-[ext_resource type="Texture2D" uid="uid://brcaimwboeedm" path="res://Item/Sprites/arma na mao.png" id="20_rv253"]
-[ext_resource type="Texture2D" uid="uid://donq3wbpumijj" path="res://Item/Sprites/selo padre.png" id="21_jxvec"]
 [ext_resource type="AudioStream" uid="uid://bxsf2lhtcfmrm" path="res://Exorcism/Sounds/exorcismo.mp3" id="21_o4s2a"]
-[ext_resource type="Texture2D" uid="uid://b2o3h2iin2xln" path="res://Item/Sprites/arma na mesa.png" id="22_ciivl"]
-[ext_resource type="Texture2D" uid="uid://bg1augblt2uo5" path="res://Item/Sprites/New Piskel-1.png (6).png" id="23_tb4rk"]
 [ext_resource type="Script" uid="uid://d2vg0ege2vxkr" path="res://Exorcism/Scripts/timer_candle.gd" id="24_ntq6v"]
 
 [sub_resource type="Theme" id="Theme_vj4gg"]
@@ -336,13 +331,8 @@ anchors_preset = 0
 script = ExtResource("11_jxvec")
 item_cross_texture = ExtResource("9_5hked")
 incensary_texture = ExtResource("11_hr6i8")
-open_hand = ExtResource("5_8ncxl")
 closed_hand = ExtResource("8_ik8ot")
 holding_cross_hand = ExtResource("5_3tqnv")
-holding_pistol_hand = ExtResource("20_rv253")
-holding_stamp_hand = ExtResource("21_jxvec")
-pistol_texture = ExtResource("22_ciivl")
-stamp_texture = ExtResource("23_tb4rk")
 
 [node name="Sound_manager" type="Control" parent="Managers" unique_id=1758878210]
 anchors_preset = 0

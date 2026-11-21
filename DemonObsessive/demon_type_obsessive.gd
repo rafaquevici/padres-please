@@ -2,6 +2,8 @@ extends Control
 
 @onready var demon_animation: AnimatedSprite2D = $Demon
 @onready var dano: AudioStreamPlayer = $Dano
+@onready var exorcism: Exorcism = $"../../../.."
+
 
 var health: int
 var demon: DemonData
@@ -9,15 +11,34 @@ var is_alive: bool = true
 
 signal died
 
-func _ready():
+
+func _ready() -> void:
 	demon_animation.play()
 	randomize()
 	random_position()
 	gui_input.connect(_on_demon_input)
-	if !is_alive:
-		died.emit()
 
-func random_position():
+
+func setup_demon(specific_demon: DemonData) -> void:
+	demon = specific_demon
+	health = demon.health
+
+	demon.health_changed.connect(_on_health_changed)
+
+
+func _on_health_changed(new_health: int) -> void:
+	health = new_health
+	dano.play()
+
+	print(demon.demon_name, " | Vida: ", health)
+
+	if health <= 0 and is_alive:
+		is_alive = false
+		died.emit()
+		_on_dead()
+
+
+func random_position() -> void:
 	var screen_size = get_viewport_rect().size
 
 	var limit_x = screen_size.x - size.x - 300
@@ -28,35 +49,31 @@ func random_position():
 
 	position = Vector2(x_random, y_random)
 
-func _on_demon_input(event: InputEvent):
+
+func _on_demon_input(event: InputEvent) -> void:
 	if not is_alive:
 		return
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+
+	if event is InputEventMouseButton \
+	and event.button_index == MOUSE_BUTTON_LEFT \
+	and event.pressed:
+
 		if GameState.is_holding_cross():
 			random_position()
-			take_demage(10)
-		if GameState.is_holding_pistol():
-			take_demage(100000)
-		if GameState.is_holding_stamp():
-			take_demage(100000)
+			take_damage(10)
 
-func _on_set_demon(specific_demon: DemonData):
-	demon = specific_demon
+		elif GameState.is_holding_pistol():
+			print("detectou")
+			exorcism.used_pistol()
+			demon.kill()
+			
 
-func _on_set_health(demon: DemonData):
-	health = demon.health
-	
-func take_demage(damage: int):
-	health = max(health - damage, 0)
-	dano.play()
-	if health <= 0 and is_alive:
-		is_alive = false
-		died.emit()
-		_on_dead()
-	print(health)
-	
-func _on_dead():
-	self.queue_free()
+func take_damage(damage: int) -> void:
+	if not is_alive:
+		return
 
-	
-	
+	demon.take_damage(damage)
+
+
+func _on_dead() -> void:
+	queue_free()

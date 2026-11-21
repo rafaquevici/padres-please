@@ -8,22 +8,39 @@ var current_npc: NpcData = null
 var current_money = 30
 var exorcism_time: float = 0.0
 var items_buyied: Array[ItemData] = []
-var pistola = preload("uid://bphvj08yfxe8s")
-var selo = preload("uid://d4e5dsh3gijxu")
-var items: Array[ItemData] = [pistola, selo]
+var Pistol = preload("uid://bphvj08yfxe8s")
+var Stamp = preload("uid://d4e5dsh3gijxu")
+var items: Array[ItemData] = [Pistol, Stamp]
+var current_character
+var current_demon: DemonData = null
+enum endings {
+	GOOD, 
+	EVIL,
+	HUMAN
+}
 
+var current_ending: endings
 
 func is_holding_cross() -> bool:
 	return item_in_hand != null and item_in_hand.name == "ItemCross"
 	
 func is_holding_pistol() -> bool:
-	return item_in_hand != null and item_in_hand.name == "Pistol"
-	
+	if item_in_hand == null or not item_in_hand.has_meta("item"):
+		return false
+
+	var item: ItemData = item_in_hand.get_meta("item")
+
+	return item.type == ItemData.Type.PISTOL
+
+
 func is_holding_stamp() -> bool:
-	return item_in_hand != null and item_in_hand.name == "Demon_Obssessive_Stamp"
+	if item_in_hand == null or not item_in_hand.has_meta("item"):
+		return false
 
+	var item: ItemData = item_in_hand.get_meta("item")
 
-
+	return item.type == ItemData.Type.STAMP
+	
 var current_day: int = 1
 var days_total: int = 5
 
@@ -61,7 +78,7 @@ func end_day() -> void:
 	if current_day < days_total:
 		get_tree().change_scene_to_file("res://Store/Store.tscn")
 	else:
-		finish_game()
+		finish_game(endings.GOOD)
 
 
 func prepare_next_day() -> void:
@@ -75,7 +92,8 @@ func resume_day() -> void:
 	time_running = true
 
 
-func finish_game() -> void:
+func finish_game(ending) -> void:
+	current_ending = ending
 	time_running = false
 	get_tree().paused = true
 	get_tree().change_scene_to_file("res://Tela_fim/tela_fim.tscn")
@@ -93,7 +111,7 @@ func restart_game() -> void:
 	get_tree().paused = false
 	current_money = 30
 	items_buyied.clear()
-	items = [pistola, selo]
+	items = [Pistol, Stamp]
 	item_in_hand = null
 	current_npc = null
 	current_day = 1
