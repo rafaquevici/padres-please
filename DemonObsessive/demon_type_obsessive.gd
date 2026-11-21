@@ -21,9 +21,12 @@ func _ready() -> void:
 
 func setup_demon(specific_demon: DemonData) -> void:
 	demon = specific_demon
+
+	demon.reset_health()
 	health = demon.health
 
-	demon.health_changed.connect(_on_health_changed)
+	if not demon.health_changed.is_connected(_on_health_changed):
+		demon.health_changed.connect(_on_health_changed)
 
 
 func _on_health_changed(new_health: int) -> void:

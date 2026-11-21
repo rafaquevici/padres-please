@@ -47,7 +47,6 @@
 script = ExtResource("2_00r1e")
 demon_name = "Eye"
 demon_catalog_icon = ExtResource("13_vj4gg")
-health = 100
 metadata/_custom_type_script = "uid://c6rso3vgbaaj8"
 
 [node name="Exorcism" type="Control" unique_id=1184818705]

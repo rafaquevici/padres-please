@@ -32,7 +32,7 @@ func _randomize_demon() -> void:
 
 func _start_demon() -> void:
 	var demon: DemonData = GameState.current_demon
-
+	
 	if demon == null:
 		return
 
