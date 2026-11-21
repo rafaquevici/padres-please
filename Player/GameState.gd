@@ -24,7 +24,7 @@ func is_holding_stamp() -> bool:
 
 
 
-var current_day: int = 5
+var current_day: int = 1
 var days_total: int = 5
 
 var day_duration: float = 300.0
