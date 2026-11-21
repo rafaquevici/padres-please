@@ -11,12 +11,17 @@ config_version=5
 [application]
 
 config/name="Padres-Please"
-run/main_scene="res://Confessional/confessional.tscn"
+run/main_scene="uid://buvugoekbabp5"
 config/features=PackedStringArray("4.6", "Forward Plus")
 
 [autoload]
 
 GameState="*uid://dih6lchem1bn6"
+
+[display]
+
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [physics]
 

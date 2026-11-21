@@ -28,3 +28,4 @@ func free_item(item_name: String) -> void:
 			filho.name = "EmptySlot"
 			break
 	cursor.texture = cursor_texture
+	GameState.item_in_hand == null

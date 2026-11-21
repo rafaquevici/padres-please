@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://d2lbjave7orp5"]
+
+[ext_resource type="Script" uid="uid://b4bludxhcqqmi" path="res://Tela_fim/tela_fim.gd" id="1_1786j"]
+[ext_resource type="Texture2D" uid="uid://dyaxykm1djfku" path="res://Animations/Spritesheets/Captura de tela 2026-10-12 192453.png" id="2_ygx2q"]
+[ext_resource type="Texture2D" uid="uid://dgt2lci3sin6" path="res://Animations/Spritesheets/caixa texto foda padre-Sheet (1).png" id="3_iwctx"]
+[ext_resource type="FontFile" uid="uid://dnkcltysv0jv7" path="res://Fonts/HOMEVIDEOBOLD-R90DV.TTF" id="4_xcsxq"]
+[ext_resource type="FontFile" uid="uid://cttbt5b77jjlq" path="res://Fonts/HOMEVIDEO-BLG6G.TTF" id="5_y118i"]
+
+[node name="TelaFim" type="Control" unique_id=396970310]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1786j")
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=1565554147]
+layout_mode = 0
+offset_right = 1153.0
+offset_bottom = 647.0
+texture = ExtResource("2_ygx2q")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2119828091]
+layout_mode = 0
+offset_left = 178.0
+offset_top = 139.0
+offset_right = 961.0
+offset_bottom = 512.0
+texture = ExtResource("3_iwctx")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="." unique_id=564274382]
+layout_mode = 0
+offset_left = 391.0
+offset_top = 282.0
+offset_right = 733.0
+offset_bottom = 371.0
+theme_override_fonts/font = ExtResource("4_xcsxq")
+theme_override_font_sizes/font_size = 40
+text = "O MAU VENCEU"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="play_again" type="Button" parent="." unique_id=1944487844]
+layout_mode = 0
+offset_left = 435.0
+offset_top = 484.0
+offset_right = 701.0
+offset_bottom = 553.0
+theme_override_colors/icon_disabled_color = Color(0.09701253, 0.03210769, 0.011884715, 0.4)
+theme_override_fonts/font = ExtResource("5_y118i")
+text = "Jogar novamente"

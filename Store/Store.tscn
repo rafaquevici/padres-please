@@ -2,9 +2,11 @@
 
 [ext_resource type="Script" uid="uid://twp5i70rmsm0" path="res://Store/store.gd" id="1_j17ay"]
 [ext_resource type="Texture2D" uid="uid://dyaxykm1djfku" path="res://Animations/Spritesheets/Captura de tela 2026-10-12 192453.png" id="2_ngq2d"]
+[ext_resource type="FontFile" uid="uid://cttbt5b77jjlq" path="res://Fonts/HOMEVIDEO-BLG6G.TTF" id="3_4t50x"]
 [ext_resource type="Texture2D" uid="uid://7t8ysnopto6x" path="res://Exorcism/Sprites/New Piskel-1.png (3).png" id="3_ilbt3"]
 [ext_resource type="Script" uid="uid://bni5wukeb8ciw" path="res://Store/money.gd" id="3_ngq2d"]
 [ext_resource type="Script" uid="uid://dls5japv4jr5h" path="res://Store/slot.gd" id="4_4t50x"]
+[ext_resource type="FontFile" uid="uid://dnkcltysv0jv7" path="res://Fonts/HOMEVIDEOBOLD-R90DV.TTF" id="7_b0ur1"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eimfe"]
 texture = ExtResource("3_ilbt3")
@@ -19,6 +21,17 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_j17ay")
+
+[node name="Fade" type="ColorRect" parent="." unique_id=368981557]
+z_index = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1198846473]
 z_index = -6
@@ -36,6 +49,7 @@ offset_left = 1019.0
 offset_top = 16.0
 offset_right = 1142.0
 offset_bottom = 64.0
+theme_override_fonts/font = ExtResource("3_4t50x")
 theme_override_font_sizes/font_size = 32
 text = "10,00✞"
 script = ExtResource("3_ngq2d")
@@ -170,10 +184,12 @@ size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxTexture_eimfe")
 script = ExtResource("4_4t50x")
 
-[node name="Button" type="Button" parent="." unique_id=625292835]
+[node name="Init_day" type="Button" parent="." unique_id=625292835]
 layout_mode = 0
 offset_left = 953.0
 offset_top = 549.0
 offset_right = 1107.0
 offset_bottom = 607.0
-text = "Exorcismo"
+theme_override_fonts/font = ExtResource("7_b0ur1")
+text = "Começar o dia"
+flat = true

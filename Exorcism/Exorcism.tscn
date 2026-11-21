@@ -5,9 +5,11 @@
 [ext_resource type="Script" uid="uid://c6rso3vgbaaj8" path="res://Exorcism/Scripts/demon_resource.gd" id="2_00r1e"]
 [ext_resource type="Texture2D" uid="uid://gmv82u7e7lkb" path="res://Exorcism/DemonCatalog/PlaceHolders/image.png" id="5_3tqnv"]
 [ext_resource type="Texture2D" uid="uid://hplao5t1sy03" path="res://Exorcism/Sprites/maozinha aberta.png" id="5_8ncxl"]
+[ext_resource type="Texture2D" uid="uid://dgt2lci3sin6" path="res://Animations/Spritesheets/caixa texto foda padre-Sheet (1).png" id="7_tyltd"]
 [ext_resource type="Texture2D" uid="uid://d27gadepcwa8f" path="res://Exorcism/Sprites/mãozinha.png" id="8_ik8ot"]
 [ext_resource type="PackedScene" uid="uid://c2afu3esd1v4y" path="res://DemonObsessive/DemonTypeObsessive.tscn" id="8_l5tor"]
 [ext_resource type="Texture2D" uid="uid://lmev3mxrdbn8" path="res://Exorcism/Sprites/cruzona_foda_padre.png" id="9_5hked"]
+[ext_resource type="FontFile" uid="uid://dnkcltysv0jv7" path="res://Fonts/HOMEVIDEOBOLD-R90DV.TTF" id="9_26huy"]
 [ext_resource type="Script" uid="uid://bc0cjwgxkx06j" path="res://Exorcism/Scripts/cronometro.gd" id="10_rv253"]
 [ext_resource type="Texture2D" uid="uid://5l7pauf3xjxk" path="res://Exorcism/Sprites/catalogue.png" id="11_5hked"]
 [ext_resource type="Texture2D" uid="uid://bfshqxkkfrj0u" path="res://Exorcism/Sprites/turibulunm.png" id="11_hr6i8"]
@@ -137,6 +139,15 @@ metadata/_edit_use_anchors_ = true
 z_index = 2
 anchors_preset = 0
 
+[node name="TextureRect" type="TextureRect" parent="UI/Moving_scenario/Buttons" unique_id=11665836]
+layout_mode = 0
+offset_left = 832.0
+offset_top = 743.0
+offset_right = 1010.0
+offset_bottom = 829.0
+texture = ExtResource("7_tyltd")
+expand_mode = 1
+
 [node name="CatalogButton" type="Button" parent="UI/Moving_scenario/Buttons" unique_id=253214379]
 z_index = 2
 custom_minimum_size = Vector2(50, 50)
@@ -153,14 +164,18 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_065et")
 icon = ExtResource("11_5hked")
 icon_alignment = 1
 
-[node name="ir_loja" type="Button" parent="UI/Moving_scenario/Buttons" unique_id=259758804]
+[node name="Confessional" type="Button" parent="UI/Moving_scenario/Buttons" unique_id=259758804]
 z_index = 2
 layout_mode = 0
-offset_left = 493.0
-offset_top = 575.0
-offset_right = 695.0
-offset_bottom = 622.0
-text = "Loja"
+offset_left = 853.0
+offset_top = 771.0
+offset_right = 995.0
+offset_bottom = 802.0
+theme_override_fonts/font = ExtResource("9_26huy")
+text = "Confessionário"
+flat = true
+alignment = 0
+autowrap_trim_flags = 192
 
 [node name="Consumables" type="Control" parent="UI/Moving_scenario" unique_id=1740629903]
 anchors_preset = 0

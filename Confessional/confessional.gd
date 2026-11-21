@@ -27,47 +27,37 @@ const lettersounds = preload("uid://d2wedde0p5uyq")
 
 
 func _ready() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	generator = NpcGenerator.new(database)
 
-	GameState.day_ending.connect(_on_day_ending)
 	GameState.day_started.connect(_on_day_started)
-
-	generate_next_npc()
-
-
-
+	
+	if GameState.time_running == false:
+		print("chamando day ending")
+		_on_day_ending()
+		
+	else:
+		generate_next_npc()
+	
 
 func _on_day_ending() -> void:
-
+	
 	get_tree().paused = true
-
-
+	
+	fade.color.a = 1.0
+	
 	var tween = create_tween()
 	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
-	tween.tween_property(fade, "color:a", 1.0, 2.5)
-
-	await tween.finished
-
-
-	GameState.prepare_next_day()
-
-
-	tween = create_tween()
-	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 	tween.tween_property(fade, "color:a", 0.0, 2.5)
-
 	await tween.finished
-
-
-	get_tree().paused = false
+	GameState.prepare_next_day()
 	GameState.resume_day()
+	get_tree().paused = false
+	
 
 	
-	type_text(npc.dialogue.dialogues[0])
-
-
 func _on_day_started() -> void:
-	generate_next_npc(false)
+	generate_next_npc(true)
 
 
 

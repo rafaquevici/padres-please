@@ -7,7 +7,7 @@ var database: NpcDatabase
 func _init(database: NpcDatabase):
 	self.database = database
 
-func generate_Sprites() -> SpriteFrames:
+func generate_Sprites() -> String:
 	return database.sprites.pick_random()
 
 func generate_names() -> String:

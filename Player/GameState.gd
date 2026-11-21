@@ -24,7 +24,7 @@ func is_holding_stamp() -> bool:
 
 
 
-var current_day: int = 1
+var current_day: int = 5
 var days_total: int = 5
 
 var day_duration: float = 300.0
@@ -32,13 +32,8 @@ var time_remaining: float = 300.0
 var time_running: bool = false
 
 
-
 var faith: int = 100
 var max_faith: int = 200
-
-
-func _ready() -> void:
-	start_day()
 
 
 func _process(delta: float) -> void:
@@ -52,9 +47,11 @@ func _process(delta: float) -> void:
 		end_day()
 
 
-func start_day() -> void:
+func start_game() -> void:
+	get_tree().paused = false
 	time_remaining = day_duration
 	time_running = true
+	get_tree().change_scene_to_file("res://Confessional/confessional.tscn")
 	print("Começou o dia ", current_day)
 
 
@@ -62,7 +59,7 @@ func end_day() -> void:
 	time_running = false
 
 	if current_day < days_total:
-		day_ending.emit()
+		get_tree().change_scene_to_file("res://Store/Store.tscn")
 	else:
 		finish_game()
 
@@ -81,16 +78,27 @@ func resume_day() -> void:
 func finish_game() -> void:
 	time_running = false
 	get_tree().paused = true
-
-	print("fim do jogo")
-
+	get_tree().change_scene_to_file("res://Tela_fim/tela_fim.tscn")
 
 
 func gain_faith(amount: int) -> void:
 	faith += amount
 	faith = min(faith, max_faith)
 
-
 func lose_faith(amount: int) -> void:
 	faith -= amount
 	faith = max(faith, 0)
+	
+func restart_game() -> void:
+	get_tree().paused = false
+	current_money = 30
+	items_buyied.clear()
+	items = [pistola, selo]
+	item_in_hand = null
+	current_npc = null
+	current_day = 1
+	time_remaining = day_duration
+	time_running = false
+	faith = 100
+	exorcism_time = 0.0
+	start_game()

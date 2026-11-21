@@ -8,3 +8,5 @@ func _process(_delta: float) -> void:
 	value = 50.0 * (1.0 - progress)
 	var cut_percent: float = 50.0 - value
 	texture_progress_offset.y = texture_progress.get_height() * cut_percent / max_value
+	if value == 0:
+		GameState.finish_game()

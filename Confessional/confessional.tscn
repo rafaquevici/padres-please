@@ -274,6 +274,7 @@ theme_override_constants/separation = 6
 
 [node name="TalkMore" type="Button" parent="Control/Buttons" unique_id=1907379326]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("4_5w4di")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_mvrw6")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_07elc")
@@ -282,6 +283,7 @@ text = "FALE MAIS"
 
 [node name="Exorcism" type="Button" parent="Control/Buttons" unique_id=1541570218]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("4_5w4di")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_mvrw6")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_07elc")
@@ -290,6 +292,7 @@ text = "EXORCIZAR"
 
 [node name="Forgive" type="Button" parent="Control/Buttons" unique_id=1143382642]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("4_5w4di")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_mvrw6")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_07elc")

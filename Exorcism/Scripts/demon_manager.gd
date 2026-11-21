@@ -8,7 +8,7 @@ extends Node
 
 var current_demon_type: DemonData.DemonType 
 var current_demon: DemonData
-var is_possessed: bool = true
+var is_possessed: bool
 
 
 func _randomize_demon():

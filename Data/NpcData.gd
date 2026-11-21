@@ -4,7 +4,7 @@ extends RefCounted
 var name: String
 var possessed: bool
 var dialogue: DialogueBlock
-var sprite: SpriteFrames
+var sprite: String
 
 
 func Initiate_Name(nameChosen: String):
@@ -19,5 +19,5 @@ func Initiate_Dialogue(dialogueBlock: DialogueBlock):
 	dialogue = dialogueBlock
 
 
-func Initiate_Sprite(spriteChoosen: SpriteFrames):
+func Initiate_Sprite(spriteChoosen: String):
 	sprite = spriteChoosen

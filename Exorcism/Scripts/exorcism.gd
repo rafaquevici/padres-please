@@ -1,7 +1,7 @@
 class_name Exorcism
 extends Control
 
-@onready var ir_loja: Button = $UI/Moving_scenario/Buttons/ir_loja
+@onready var confessional: Button = $UI/Moving_scenario/Buttons/Confessional
 @onready var cronometro: Node = $Cronometro
 @onready var demon_type_obsessive: Control = $UI/Smoke_Container/Demons/DemonTypeObsessive
 @onready var catalog_button: Button = $UI/Moving_scenario/Buttons/CatalogButton
@@ -24,8 +24,10 @@ var money_acquired: float
 
 
 func _ready():
+	demon_manager.is_possessed = GameState.current_npc.possessed
+	print(GameState.current_npc.possessed)
 	sound_manager.play_music(true)
-	character_manager._get_character("isa", true)
+	character_manager._get_character(GameState.current_npc.sprite, true)
 	GameState.exorcism_time = 0.0
 	cronometro.counting = true
 	randomize()
@@ -40,15 +42,15 @@ func _ready():
 			button.pressed.connect(item_exorcism_manager._on_consumable_pressed.bind(button))
 	item_cross.pressed.connect(item_exorcism_manager._on_item_cross_pressed)
 	incensary.pressed.connect(item_exorcism_manager._on_item_incencary_pressed)
-	ir_loja.pressed.connect(open_store)
+	confessional.pressed.connect(open_confessional)
 
 func _process(delta: float):
 	var velocidade: float = 100.0
 	var mouse_pos: Vector2 = get_global_mouse_position()
-	var window_size = DisplayServer.window_get_size()
+	var viewport_size: Vector2 = get_viewport_rect().size
 	var half_size: Vector2 = cursor.size / 2.0
 	cursor.global_position = mouse_pos - half_size
-	if mouse_pos.y > (window_size.y - 10) and scenario.position.y > -250:
+	if mouse_pos.y > (viewport_size.y - 10) and scenario.position.y > -250:
 		scenario.position.y -= velocidade * delta
 		smoke_container.offset.y -= velocidade * delta
 	elif mouse_pos.y < 10 and scenario.position.y < 250:
@@ -70,9 +72,11 @@ func _input(event: InputEvent) -> void:
 
 func end_exorcism():
 	cronometro.counting = false
-	money_acquired = 10 - (GameState.exorcism_time * 0.001)
+	money_acquired = snappedf(10.0 - (GameState.exorcism_time * 0.001), 0.5)
 	GameState.current_money += money_acquired
+	print(GameState.current_money)
 	sound_manager.play_music(false)
+	open_confessional()
 
-func open_store():
-	get_tree().change_scene_to_file("res://Store/Store.tscn")
+func open_confessional():
+	get_tree().change_scene_to_file("res://Confessional/confessional.tscn")

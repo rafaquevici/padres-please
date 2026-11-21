@@ -1,12 +1,13 @@
 [gd_scene format=3 uid="uid://buvugoekbabp5"]
 
+[ext_resource type="Script" uid="uid://dbt04otloq7mp" path="res://Menu/menu_inicial.gd" id="1_uxq0m"]
+[ext_resource type="Texture2D" uid="uid://dyaxykm1djfku" path="res://Animations/Spritesheets/Captura de tela 2026-10-12 192453.png" id="2_srrnt"]
+[ext_resource type="FontFile" uid="uid://cttbt5b77jjlq" path="res://Fonts/HOMEVIDEO-BLG6G.TTF" id="3_crxnc"]
+[ext_resource type="Script" uid="uid://bqh6nev0vhtu2" path="res://Menu/check_button.gd" id="4_srrnt"]
+[ext_resource type="Script" uid="uid://ceyl3wq8jjdqw" path="res://Menu/audio_control.gd" id="5_crxnc"]
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iyevl"]
 modulate_color = Color(1.6319928, 1.6218463, 1.6568162, 1)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hf8ey"]
-content_margin_left = 1879.0
-content_margin_top = 213.0
-content_margin_bottom = 336.0
 
 [sub_resource type="Gradient" id="Gradient_jrnjl"]
 
@@ -97,7 +98,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_u3uhe")
 }],
-"loop": 1,
+"loop": true,
 "name": &"default",
 "speed": 5.0
 }]
@@ -109,6 +110,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_uxq0m")
 
 [node name="Wallpaper" type="Panel" parent="." unique_id=1001193274]
 layout_mode = 1
@@ -119,16 +121,23 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_iyevl")
 
+[node name="TextureRect" type="TextureRect" parent="Wallpaper" unique_id=1897623581]
+layout_mode = 0
+offset_top = -6.0
+offset_right = 1155.0
+offset_bottom = 647.0
+texture = ExtResource("2_srrnt")
+
 [node name="BotoesPrincipais" type="VBoxContainer" parent="." unique_id=443472003]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 108.0
-offset_top = -107.0
-offset_right = 173.0
-offset_bottom = -41.0
+offset_left = 37.0
+offset_top = -9.0
+offset_right = 102.0
+offset_bottom = 57.0
 grow_vertical = 2
 scale = Vector2(4.5, 4.5)
 theme_override_constants/separation = -11
@@ -141,12 +150,13 @@ tooltip_text = "
 
 [node name="IniciarJogo" type="Label" parent="BotoesPrincipais/IniciarJogo" unique_id=538353822]
 layout_mode = 0
-offset_left = 9.555556
-offset_top = 11.555555
-offset_right = 193.55556
-offset_bottom = 46.555557
+offset_left = 1.333334
+offset_top = 12.0
+offset_right = 231.33333
+offset_bottom = 47.0
 scale = Vector2(0.25, 0.25)
 theme_override_colors/font_color = Color(0.9098039, 0, 0.101960786, 1)
+theme_override_fonts/font = ExtResource("3_crxnc")
 theme_override_font_sizes/font_size = 32
 text = "INICIAR JOGO"
 
@@ -156,12 +166,13 @@ size_flags_vertical = 3
 
 [node name="Opcoes" type="Label" parent="BotoesPrincipais/Opcoes" unique_id=1801949351]
 layout_mode = 0
-offset_left = 16.666666
-offset_top = 11.888888
-offset_right = 142.66666
-offset_bottom = 56.88889
+offset_left = 1.5555558
+offset_top = 11.333332
+offset_right = 127.55556
+offset_bottom = 56.333332
 scale = Vector2(0.25, 0.25)
 theme_override_colors/font_color = Color(0.9098039, 0, 0.101960786, 1)
+theme_override_fonts/font = ExtResource("3_crxnc")
 theme_override_font_sizes/font_size = 32
 text = "OPÇÕES"
 
@@ -171,46 +182,33 @@ size_flags_vertical = 3
 
 [node name="Sair" type="Label" parent="BotoesPrincipais/Sair" unique_id=1506425061]
 layout_mode = 0
-offset_left = 23.555555
-offset_top = 11.555555
-offset_right = 92.55556
-offset_bottom = 56.555557
+offset_left = 3.1111107
+offset_top = 10.888888
+offset_right = 80.111115
+offset_bottom = 55.88889
 scale = Vector2(0.25, 0.25)
 theme_override_colors/font_color = Color(0.9098039, 0, 0.101960786, 1)
+theme_override_fonts/font = ExtResource("3_crxnc")
 theme_override_font_sizes/font_size = 32
 text = "SAIR"
 
 [node name="Opcoes" type="Panel" parent="." unique_id=532869380]
 unique_name_in_owner = true
 process_mode = 3
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = -52.0
+offset_right = -14.0
+offset_bottom = -52.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.5, 1.5)
-
-[node name="Tumulo" type="Label" parent="Opcoes" unique_id=768697678]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -498.0
-offset_top = -210.0
-offset_right = 1487.0
-offset_bottom = 366.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.5, 0.75)
-theme_override_colors/font_color = Color(0.8784314, 0.9254902, 0, 1)
-theme_override_font_sizes/font_size = 26
-theme_override_styles/normal = SubResource("StyleBoxTexture_hf8ey")
-horizontal_alignment = 1
 
 [node name="Voltar" type="TextureButton" parent="Opcoes" unique_id=1347289705]
 layout_mode = 1
@@ -242,6 +240,7 @@ offset_bottom = 54.333336
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.9098039, 0, 0.101960786, 1)
+theme_override_fonts/font = ExtResource("3_crxnc")
 theme_override_font_sizes/font_size = 25
 text = "VOLTAR"
 
@@ -279,8 +278,10 @@ theme_override_colors/font_focus_color = Color(0.9098039, 0, 0.101960786, 1)
 theme_override_colors/font_pressed_color = Color(0.9098039, 0, 0.101960786, 1)
 theme_override_colors/font_hover_color = Color(0.9098039, 0, 0.101960786, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.9098039, 0, 0.101960786, 1)
+theme_override_fonts/font = ExtResource("3_crxnc")
 theme_override_font_sizes/font_size = 20
 text = "TELA CHEIA"
+script = ExtResource("4_srrnt")
 
 [node name="BotaoVolume" type="TextureRect" parent="Opcoes" unique_id=202166156]
 layout_mode = 1
@@ -304,10 +305,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -54.666668
-offset_top = -70.0
-offset_right = 77.33333
-offset_bottom = -54.0
+offset_left = -64.0
+offset_top = 75.33333
+offset_right = 68.0
+offset_bottom = 91.33333
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_icons/grabber_disabled = SubResource("GradientTexture2D_01hwc")
@@ -317,6 +318,7 @@ theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_eoq0q")
 max_value = 1.0
 step = 0.05
 value = 1.0
+script = ExtResource("5_crxnc")
 
 [node name="IconeSom" type="TextureRect" parent="Opcoes/AudioControl" unique_id=1252269931]
 layout_mode = 0
@@ -332,7 +334,7 @@ autoplay = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Opcoes" unique_id=537366840]
 texture_filter = 1
-position = Vector2(-14, 6.000003)
+position = Vector2(8.666665, 32.666668)
 scale = Vector2(1.2, 1.2)
 sprite_frames = SubResource("SpriteFrames_w6878")
 autoplay = "default"
